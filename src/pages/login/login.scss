@@ -1,0 +1,77 @@
+page-login {
+    ::-webkit-input-placeholder {
+        color: light !important;
+      }
+      
+      .noHeader { display: none; }
+      .dblock { display: block; }
+      .dinline-block { display: inline-block; }
+      .vmiddle { vertical-align: middle; }
+      
+      .login-container {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        padding: 8vw;
+        text-align: center;
+        color: light;
+        background-color: lightblue;
+        /* background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); */
+      }
+      
+      .login-container h1 { color: #fff; }
+      .login-container .bgInput { border-radius: 50px; text-align: center; margin-bottom: 2rem; }
+      .login-container .bgInput input { text-align: center; color: #666; }
+      .login-container .bgInput input:focus { color: #0091c7; }
+      .login-container .login-button{
+          border: 2px solid #fff;
+          color: #fff;
+          padding: 2.25rem 1rem;
+          width: 100%;
+          max-width: 230px;
+      }
+      .login-container .login-button >* { display: inline-block; vertical-align: middle; }
+      .login-container .login-button .icon { margin-left: 5px; }
+      
+      .other-container {   position: relative; width: 100%; margin: 0 auto; padding: 10vw; }
+      .createAccount { border: 0 none !important; color: #888; background: none !important; }
+      .createAccount:hover { color:#2cb5e8; }
+      
+      *[class^="socialButtom-"]{
+        border-radius: 4px;
+        color: #fff;
+        width: 100%;
+        max-width: 300px;  
+        margin: auto;
+        padding: 2.25rem 0;
+        margin-bottom: 1rem;
+        border-radius: 50px;
+      }
+      *[class^="socialButtom-"] .icon {
+        font-size: 3.2rem; 
+      }
+      .socialButtom-face { background-color: #4267b2; }
+      .socialButtom-face:hover, 
+      .socialButtom-face:active {background-color: #416abc;  }
+      
+      .socialButtom-twitter { background-color: #1b95e0; }
+      .socialButtom-twitter:hover,
+      .socialButtom-twitter:active { background-color: #1296e7; }
+      
+      .item-trns{
+        background: transparent !important;
+      }
+      
+      .button-menu {
+        width: 130px;
+        height: 90px;
+      }
+      
+      .style-header{
+        background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+      }
+      
+      .ion-item:disabled {
+        background-color:#ffffffbd !important;
+      }
+}

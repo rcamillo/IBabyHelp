@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="login-container">
+    <div class="login-container">
+  
+      <form [formGroup]="form">
+        <ion-card>
+          <ion-avatar item-start>
+      
+          <button ion-button icon-right (click)="onTakePicture()">
+            Take Picture <ion-icon name="camera"></ion-icon>
+          </button>
+      
+          <img *ngIf="image"
+            [src]="domSanitizer.bypassSecurityTrustUrl(image)" />
+      
+          </ion-avatar>
+        </ion-card>
+      
+        <ion-list>
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Nome</ion-label>
+            <ion-input type="text" formControlName="nome"></ion-input>
+          </ion-item>
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Sobrenome</ion-label>
+            <ion-input type="text" formControlName="sobrenome"></ion-input>
+          </ion-item>
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Senha</ion-label>
+            <ion-input type="password" formControlName="senha"></ion-input>
+          </ion-item>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Nome do Bebe</ion-label>
+            <ion-input type="text" formControlName="babyname"></ion-input>
+          </ion-item>
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Sexo</ion-label>
+            <ion-select formControlName="sexo"> 
+              <ion-option value="Feminino">Feminino</ion-option>
+              <ion-option value="Masculino">Masculino</ion-option>
+            </ion-select>					
+          </ion-item>
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Data de Nascimento</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="babyDate"></ion-datetime>
+          </ion-item>
+        </ion-list>
+        
+        <br>
+        <button ion-button round outline color="dark" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+          Salvar
+        </button>
+  
+      </form>
+    </div>
+  
+  </ion-content>

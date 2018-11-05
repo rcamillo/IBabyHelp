@@ -1,0 +1,51 @@
+<ion-header no-border class="noHeader">
+    <ion-navbar transparent>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div class="login-container">
+      <h1>Bem vindo</h1>
+      <form #f="ngForm" (submit)="login(f)">
+  
+        <ion-list>
+          <ion-item class="bgInput">
+            <ion-input type="email" placeholder="Email" name="email" clearInput clearOnEdit="false" ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item class="bgInput">
+            <ion-input type="password" placeholder="Senha" clearInput name="senha" clearOnEdit="false" ngModel>
+            </ion-input>
+          </ion-item>    
+  
+          <button ion-button round outline class="login-button">
+            Entrar
+            <ion-icon name="arrow-round-forward"></ion-icon>
+          </button>
+          
+        </ion-list>
+  
+      </form>
+    </div>
+  
+    <div class="other-container">
+      <span class="round-buttom-arrow">
+        
+      </span>
+      <button ion-button icon-left block (click)="facebookLogin()" class="socialButtom-face">
+        <ion-icon name="logo-facebook" class="dinline-block vmiddle"></ion-icon>
+        <span class="dinline-block vmiddle">Entrar com o facebook</span>
+      </button>
+  
+      <button ion-button icon-left block (click)="googleLogin()" class="socialButtom-twitter">
+        <ion-icon name="logo-twitter" class="dinline-block vmiddle"></ion-icon>
+        <span class="dinline-block vmiddle">Entrar com o Twitter</span>
+      </button>
+  
+      <button ion-button block outline (click)="goToSignup()" class="createAccount">Criar uma conta</button>
+      
+    <button ion-button block clear type="button"
+            color="primary" (click)="recuperar()">Recuperar Senha</button>
+      
+    </div>
+  
+  </ion-content>

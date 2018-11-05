@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Cadastre Vacinas</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="login-container">
+    <div class="login-container">
+  
+      <form [formGroup]="form">
+        <ion-list>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Nome da Vacina</ion-label>
+            <ion-input type="text" formControlName="nomeVacina"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.nomeVacina.valid && (form.controls.nomeVacina.dirty || form.controls.nomeVacina.touched)" color="danger">
+            <div [hidden]="!form.controls.nomeVacina.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Data de Aplicação</ion-label>
+            <ion-select formControlName="aplicacao">
+              <ion-option value="Ao nascer">Ao nascer</ion-option>
+              <ion-option value="1º Mês">1º Mês</ion-option>
+              <ion-option value="2 Meses">2 Meses</ion-option>
+              <ion-option value="3 Meses">3 Meses</ion-option>
+              <ion-option value="4 Meses">4 Meses</ion-option>
+              <ion-option value="5 Meses">5 Meses</ion-option>
+              <ion-option value="6 Meses">6 Meses</ion-option>
+              <ion-option value="9 Agosto">9 Meses</ion-option>
+              <ion-option value="12 Meses">12 Meses</ion-option>
+              <ion-option value="15 Meses">15 Meses</ion-option>
+  
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.aplicacao.valid && (form.controls.aplicacao.dirty || form.controls.aplicacao.touched)" color="danger">
+            <div [hidden]="!form.controls.dataVacina.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Dose: </ion-label>
+              <ion-select formControlName="dose">
+                <ion-option value="Única">Única</ion-option>
+                <ion-option value="1º dose">1º dose</ion-option>
+                <ion-option value="2º dose">2º dose</ion-option>
+                <ion-option value="3º dose">3º dose</ion-option>
+                <ion-option value="Reforço">Reforço</ion-option>
+               </ion-select>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.dose.valid && (form.controls.dose.dirty || form.controls.dose.touched)" color="danger">
+            <div [hidden]="!form.controls.dose.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+          
+          
+        </ion-list>
+        <br>
+        <button ion-button round outline type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+          Salvar
+        </button>
+      </form>
+  
+    </div>
+  </ion-content>
+  

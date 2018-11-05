@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="login-container">
+    <div>
+      <form [formGroup]="form">
+        <ion-list>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Nome do Médico</ion-label>
+            <ion-input type="text" formControlName="nomeMedico"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.nomeMedico.valid && (form.controls.nomeMedico.dirty || form.controls.nomeMedico.touched)" color="danger">
+            <div [hidden]="!form.controls.nomeMedico.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Data da Consulta</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataConsulta"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.dataConsulta.valid && (form.controls.dataConsulta.dirty || form.controls.dataConsulta.touched)" color="danger">
+            <div [hidden]="!form.controls.dataConsulta.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Hora da Consulta</ion-label>
+            <ion-datetime displayFormat="HH:mm" formControlName="horaConsulta"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.horaConsulta.valid && (form.controls.horaConsulta.dirty || form.controls.horaConsulta.touched)" color="danger">
+            <div [hidden]="!form.controls.horaConsulta.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+      
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Observações</ion-label>
+            <ion-input type="text" formControlName="observacao"></ion-input>
+          </ion-item>
+  
+        </ion-list>
+  
+        <div padding>
+          <button ion-button round outline color="dark" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+            Salvar
+          </button>
+        </div>
+  
+      </form>
+    </div> 
+  </ion-content>
+  

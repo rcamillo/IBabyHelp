@@ -1,0 +1,65 @@
+<ion-header color="primary">
+    <ion-navbar hideBackButton>
+      <button ion-button menuToggle>
+        <ion-icon name="menu" color="primary"></ion-icon>
+      </button>
+      <ion-title>Agenda</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="login-container">
+    <div padding>
+      <ion-segment [(ngModel)]="agenda">
+        <ion-segment-button value="medico">
+          Médicos
+        </ion-segment-button>
+        <ion-segment-button value="vacinas">
+          Vacinas
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  
+    <div [ngSwitch]="agenda">
+    <ion-list *ngSwitchCase="'medico'">
+      <ion-item-sliding *ngFor='let m of listmedicos | async'> 
+        <ion-item class="item-trns" *ngIf='uiduser == m.uiduser' disable>
+          <ion-avatar item-start>
+            <img src="https://png.pngtree.com/element_origin_min_pic/17/08/30/ee5309fb3e3b6432301293e732761685.jpg"/>
+          </ion-avatar>
+          <h2>{{m.nomeMedico}}</h2>
+          <h3>Data da Consulta: {{m.dataConsulta}}</h3>
+          <p>Hora da Consulta: {{m.horaConsulta}}</p>
+        </ion-item>
+  
+        <ion-item-options>
+          <button ion-button color="danger" (click)="removeMedico(m.key)">Apagar</button>
+          <button ion-button color="primary" (click)="editMedico(m)">Editar</button>
+        </ion-item-options>
+  
+      </ion-item-sliding>
+      <button color="secondary" ion-button round (click)="newMedico()">Adicionar Agenda Médica</button>
+     </ion-list>
+  
+      <ion-list *ngSwitchCase="'vacinas'">
+       <ion-item-sliding *ngFor='let v of listvacinas | async'> 
+        <ion-item class="item-trns">
+          <ion-avatar item-start>
+            <img src="https://www.tribunapr.com.br/wp-content/uploads/sites/1/2018/08/vacina-poliomelite-825x509.jpg?a86372"/>
+          </ion-avatar>
+          <h2>{{v.nomeVacina}}</h2>
+          <h3>Aplicar: {{v.aplicacao}}</h3>
+          <p>Dose: {{v.dose}}</p>
+        </ion-item>
+  
+        <ion-item-options>
+          <button ion-button color="danger" (click)="removeVacina(v.key)">Apagar</button>
+          <button ion-button color="primary" (click)="editVacina(v)">Editar</button>
+        </ion-item-options>
+  
+       </ion-item-sliding>
+  
+      <button color="secondary" ion-button round (click)="newVacina()">Adicionar Vacinas</button>
+     </ion-list>
+  
+    </div>
+  </ion-content>

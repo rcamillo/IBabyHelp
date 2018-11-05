@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="login-container">
+  
+      <form [formGroup]="form">
+        <ion-list>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Dia</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="diaAmamentacao"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.diaAmamentacao.valid && (form.controls.diaAmamentacao.dirty || form.controls.diaAmamentacao.touched)" color="danger">
+            <div [hidden]="!form.controls.diaAmamentacao.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Hora de Inicio</ion-label>
+            <ion-datetime displayFormat="HH:mm" formControlName="inicioAmamentacao"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.inicioAmamentacao.valid && (form.controls.inicioAmamentacao.dirty || form.controls.inicioAmamentacao.touched)" color="danger">
+            <div [hidden]="!form.controls.inicioAmamentacao.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+  
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Hora de Termino</ion-label>
+            <ion-datetime displayFormat="HH:mm" formControlName="terminoAmamentacao"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="!form.controls.terminoAmamentacao.valid && (form.controls.terminoAmamentacao.dirty || form.controls.terminoAmamentacao.touched)" color="danger">
+            <div [hidden]="!form.controls.terminoAmamentacao.errors.required">
+              O campo é obrigatório
+            </div>
+          </ion-item>
+      
+          <ion-item class="item-trns">
+            <ion-label color="light" floating>Observações</ion-label>
+            <ion-input type="tel" formControlName="observacao"></ion-input>
+          </ion-item>
+  
+        </ion-list>
+  
+        <div padding>
+          <button ion-button round outline color="dark" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+            Salvar
+          </button>
+        </div>
+  
+      </form>
+  </ion-content>
+  
