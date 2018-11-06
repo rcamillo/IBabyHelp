@@ -18,6 +18,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { AmamentacaoPage } from '../pages/amamentacao/amamentacao';
+import { PerfilPage } from '../pages/perfil/perfil';
 
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CadastroMedicoPage } from '../pages/cadastro-medico/cadastro-medico';
@@ -34,6 +35,7 @@ import { MedicoProvider } from '../providers/medico/medico';
 import { VacinaProvider } from '../providers/vacina/vacina';
 import { AmamentacaoProvider } from '../providers/amamentacao/amamentacao';
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { AtualizaUsuarioProvider } from '../providers/atualiza-usuario/atualiza-usuario';
 
 const config = {
   apiKey: "AIzaSyA_gfv_QCjE7fikvzTKz3HGzT-HQBhNixk",
@@ -58,6 +60,7 @@ const config = {
     DicasPage,
     LoginPage,
     TabsPage,
+    PerfilPage,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,7 @@ const config = {
     DicasPage,
     LoginPage,
     TabsPage,
+    PerfilPage,
   ],
   providers: [
     StatusBar,
@@ -90,6 +94,7 @@ const config = {
     AmamentacaoProvider,
     UsuarioProvider,
     Camera,
+    AtualizaUsuarioProvider,
   ]
 })
 export class AppModule {}

@@ -14,8 +14,7 @@
             Take Picture <ion-icon name="camera"></ion-icon>
           </button>
       
-          <img *ngIf="image"
-            [src]="domSanitizer.bypassSecurityTrustUrl(image)" />
+          <img *ngIf="image" [src]="domSanitizer.bypassSecurityTrustUrl(image)" />
       
           </ion-avatar>
         </ion-card>
@@ -55,7 +54,6 @@
           </ion-item>
         </ion-list>
         
-        <br>
         <button ion-button round outline color="dark" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
           Salvar
         </button>
