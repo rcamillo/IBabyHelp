@@ -5,46 +5,49 @@
 </ion-header>
 <ion-content class="login-container">
   <div class="login-container">
-    <form #f="ngForm" (submit)="cadastrar(f)">
-    <form #updateuser="ngForm" (submit)="atualizar(updateuser)">
-      <ion-card>
-        <ion-avatar item-start>
-    
-        <button ion-button icon-right (click)="onTakePicture()">
-          Take Picture <ion-icon name="camera"></ion-icon>
-        </button>
-    
-        <img *ngIf="image" [src]="domSanitizer.bypassSecurityTrustUrl(image)" />
-    
-        </ion-avatar>
-      </ion-card>
+
+    <form [formGroup]="form">
+      <ion-grid>
+          <ion-row>
+            <ion-col col-md-4 offset-md-4>
+              <button ion-button (click)="openImagePicker()">Select Photo</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-md-4 offset-md-4>
+              <button ion-button (click)="openImagePickerCrop()">Select Photo (Crop)</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
     
       <ion-list>
         <ion-item class="item-trns">
-          <ion-label color="light" floating>Nome</ion-label>
-          <ion-input type="text" ngModel name="nome"></ion-input>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" formControlName="nome"></ion-input>
         </ion-item>
 
 
         <ion-item class="item-trns">
-          <ion-label color="light" floating>Nome do Bebe</ion-label>
-          <ion-input type="text" ngModel name="babyname"></ion-input>
+          <ion-label floating>Nome do Bebe</ion-label>
+          <ion-input type="text" formControlName="babyname"></ion-input>
         </ion-item>
+
         <ion-item class="item-trns">
-          <ion-label color="light" floating>Sexo</ion-label>
-          <ion-select ngModel name="sexo"> 
+          <ion-label floating>Sexo</ion-label>
+          <ion-select  formControlName="sexo"> 
             <ion-option value="Feminino">Feminino</ion-option>
             <ion-option value="Masculino">Masculino</ion-option>
           </ion-select>					
         </ion-item>
+
         <ion-item class="item-trns">
-          <ion-label color="light" floating>Data de Nascimento</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" ngModel name="datanasc"></ion-datetime>
+          <ion-label floating>Data de Nascimento</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" formControlName="babyDate"></ion-datetime>
         </ion-item>
       </ion-list>
       
-      <button ion-button round outline color="dark">
-        Salvar
+      <button ion-button round outline color="dark" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+        Atualizar
       </button>
 
     </form>

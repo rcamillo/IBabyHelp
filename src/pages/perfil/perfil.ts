@@ -5,7 +5,7 @@ import { Observable} from 'rxjs';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { CadastroPage } from '../cadastro/cadastro';
+import { AtualizaUsuarioPage } from '../atualiza-usuario/atualiza-usuario';
 
 /**
  * Generated class for the PerfilPage page.
@@ -38,7 +38,7 @@ export class PerfilPage {
   }
 
   public editUsuario(u: any): void {
-    this.navCtrl.push(CadastroPage, { usuario: u });
+    this.navCtrl.push(AtualizaUsuarioPage, { usuario: u });
   }
 
 

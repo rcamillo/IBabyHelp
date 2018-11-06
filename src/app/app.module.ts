@@ -24,6 +24,7 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CadastroMedicoPage } from '../pages/cadastro-medico/cadastro-medico';
 import { CadastroVacinaPage } from '../pages/cadastro-vacina/cadastro-vacina';
 import { CadastroAmamentacaoPage } from '../pages/cadastro-amamentacao/cadastro-amamentacao';
+import { AtualizaUsuarioPage } from '../pages/atualiza-usuario/atualiza-usuario';
 
 import { DicasPage } from '../pages/dicas/dicas';
 import { LoginPage } from '../pages/login/login';
@@ -35,7 +36,6 @@ import { MedicoProvider } from '../providers/medico/medico';
 import { VacinaProvider } from '../providers/vacina/vacina';
 import { AmamentacaoProvider } from '../providers/amamentacao/amamentacao';
 import { UsuarioProvider } from '../providers/usuario/usuario';
-import { AtualizaUsuarioProvider } from '../providers/atualiza-usuario/atualiza-usuario';
 
 const config = {
   apiKey: "AIzaSyA_gfv_QCjE7fikvzTKz3HGzT-HQBhNixk",
@@ -61,6 +61,7 @@ const config = {
     LoginPage,
     TabsPage,
     PerfilPage,
+    AtualizaUsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -84,6 +85,7 @@ const config = {
     LoginPage,
     TabsPage,
     PerfilPage,
+    AtualizaUsuarioPage
   ],
   providers: [
     StatusBar,
@@ -94,7 +96,6 @@ const config = {
     AmamentacaoProvider,
     UsuarioProvider,
     Camera,
-    AtualizaUsuarioProvider,
   ]
 })
 export class AppModule {}
