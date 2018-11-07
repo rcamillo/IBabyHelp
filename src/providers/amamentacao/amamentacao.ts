@@ -20,13 +20,6 @@ export class AmamentacaoProvider {
     public afAuth: AngularFireAuth) 
   { }
 
-  // get(key: string) {
-  //   return this.db.object(this.PATH + key).snapshotChanges()
-  //     .map(c => {
-  //       return { key: c.key, ...c.payload.val() };
-  //     });
-  // }
-
   save(amamentacao: any) {
     return new Promise((resolve, reject) => {
       if (amamentacao.key) {

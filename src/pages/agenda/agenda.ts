@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+//import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -10,12 +10,8 @@ import { Observable } from 'rxjs';
 import { CadastroMedicoPage } from '../cadastro-medico/cadastro-medico';
 import { CadastroVacinaPage } from '../cadastro-vacina/cadastro-vacina';
 
-/**
- * Generated class for the AgendaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { MedicoProvider } from '../../providers/medico/medico';
+import { VacinaProvider } from '../../providers/vacina/vacina';
 
 @IonicPage()
 @Component({
@@ -31,8 +27,8 @@ export class AgendaPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private toast: ToastController,
-    // private providervacina: VacinaService,
-    // private providermedico: MedicoService,
+    private providervacina: VacinaProvider,
+    private providermedico: MedicoProvider,
     private db : AngularFireDatabase,
     public afAuth: AngularFireAuth) 
   {
@@ -57,30 +53,29 @@ export class AgendaPage {
     this.navCtrl.push(CadastroMedicoPage, { medico: m });
   }
 
-  // removeVacina(key: string) {
-  //   if (key) {
-  //     this.providervacina.remove(key)
-  //       .then(() => {
-  //         this.toast.create({ message: 'Vacina removida com sucesso.', duration: 3000 }).present();
-  //       })
-  //       .catch(() => {
-  //         this.toast.create({ message: 'Falha ao remover o vacina.', duration: 3000 }).present();
-  //       });
-  //   }
-  // }
+  removeVacina(key: string) {
+    if (key) {
+      this.providervacina.remove(key)
+        .then(() => {
+          this.toast.create({ message: 'Vacina removida com sucesso.', duration: 3000 }).present();
+        })
+        .catch(() => {
+          this.toast.create({ message: 'Falha ao remover o vacina.', duration: 3000 }).present();
+        });
+    }
+  }
 
-  // removeMedico(key: string) {
-  //   if (key) {
-  //     this.providermedico.remove(key)
-  //       .then(() => {
-  //         this.toast.create({ message: 'Agenda médica removida com sucesso.', duration: 3000 }).present();
-  //       })
-  //       .catch(() => {
-  //         this.toast.create({ message: 'Falha ao remover o agenda médica.', duration: 3000 }).present();
-  //       });
-  //   }
-  // }
-
+  removeMedico(key: string) {
+    if (key) {
+      this.providermedico.remove(key)
+        .then(() => {
+          this.toast.create({ message: 'Agenda médica removida com sucesso.', duration: 3000 }).present();
+        })
+        .catch(() => {
+          this.toast.create({ message: 'Falha ao remover o agenda médica.', duration: 3000 }).present();
+        });
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgendaPage');

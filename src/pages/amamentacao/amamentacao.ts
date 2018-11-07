@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+// import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
@@ -8,6 +8,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { CadastroAmamentacaoPage } from '../cadastro-amamentacao/cadastro-amamentacao'; 
+
+import { AmamentacaoProvider } from '../../providers/amamentacao/amamentacao'
 
 /**
  * Generated class for the AmamentacaoPage page.
@@ -29,7 +31,7 @@ export class AmamentacaoPage {
   constructor(
     private navCtrl: NavController,
     private toast: ToastController,
-    // private provider: AmamentacaoService,
+    private provider: AmamentacaoProvider,
     private db : AngularFireDatabase,
     public afAuth: AngularFireAuth,
     public navParams: NavParams) 
@@ -51,16 +53,16 @@ export class AmamentacaoPage {
     this.navCtrl.push(CadastroAmamentacaoPage, { amamentacao: a });
   }
 
-  // removeAmamentacao(key: string) {
-  //   if (key) {
-  //     this.provider.remove(key)
-  //       .then(() => {
-  //         this.toast.create({ message: 'Amamentação removida com sucesso.', duration: 3000 }).present();
-  //       })
-  //       .catch(() => {
-  //         this.toast.create({ message: 'Falha ao remover Amamentação.', duration: 3000 }).present();
-  //       });
-  //   }
-  // }
+  removeAmamentacao(key: string) {
+    if (key) {
+      this.provider.remove(key)
+        .then(() => {
+          this.toast.create({ message: 'Amamentação removida com sucesso.', duration: 3000 }).present();
+        })
+        .catch(() => {
+          this.toast.create({ message: 'Falha ao remover Amamentação.', duration: 3000 }).present();
+        });
+    }
+  }
 
 }

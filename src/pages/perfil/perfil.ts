@@ -7,12 +7,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { AtualizaUsuarioPage } from '../atualiza-usuario/atualiza-usuario';
 
-/**
- * Generated class for the PerfilPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
