@@ -6,14 +6,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 
-
-/**
- * Generated class for the AtualizaUsuarioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-atualiza-usuario',

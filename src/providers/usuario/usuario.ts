@@ -35,7 +35,6 @@ export class UsuarioProvider {
          .update(key, {key:key})
           .catch((e) => reject(e));
         })
-
       .catch((error) => {
       })
       }
