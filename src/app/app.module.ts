@@ -39,9 +39,6 @@ import { VacinaProvider } from '../providers/vacina/vacina';
 import { AmamentacaoProvider } from '../providers/amamentacao/amamentacao';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 
-import { ImagePicker } from '@ionic-native/image-picker';
-import { Crop } from '@ionic-native/crop';
-import * as firebase from "firebase";
 
 const config = {
   apiKey: "AIzaSyA_gfv_QCjE7fikvzTKz3HGzT-HQBhNixk",
@@ -92,7 +89,7 @@ const config = {
     LoginPage,
     TabsPage,
     PerfilPage,
-    AtualizaUsuarioPage
+    AtualizaUsuarioPage,
   ],
   providers: [
     StatusBar,
@@ -102,9 +99,7 @@ const config = {
     VacinaProvider,
     AmamentacaoProvider,
     UsuarioProvider,
-    Camera,
-    ImagePicker,
-    Crop,
+    Camera
   ]
 })
 export class AppModule {}

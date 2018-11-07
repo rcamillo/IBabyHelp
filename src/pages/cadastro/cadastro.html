@@ -1,33 +1,19 @@
 <ion-header>
     <ion-navbar>
-      <ion-title>{{ title }}</ion-title>
+      <ion-title>Cadastrando...</ion-title>
     </ion-navbar>
   </ion-header>
   <ion-content class="login-container">
     <div class="login-container">
   
       <form [formGroup]="form">
-        <ion-card>
-          <ion-avatar item-start>
-      
-          <button ion-button icon-right (click)="onTakePicture()">
-            Take Picture <ion-icon name="camera"></ion-icon>
-          </button>
-      
-          <img *ngIf="image" [src]="domSanitizer.bypassSecurityTrustUrl(image)" />
-      
-          </ion-avatar>
-        </ion-card>
       
         <ion-list>
           <ion-item class="item-trns">
             <ion-label floating>Nome</ion-label>
             <ion-input type="text" formControlName="nome"></ion-input>
           </ion-item>
-          <ion-item class="item-trns">
-            <ion-label floating>Sobrenome</ion-label>
-            <ion-input type="text" formControlName="sobrenome"></ion-input>
-          </ion-item>
+
           <ion-item class="item-trns">
             <ion-label floating>Email</ion-label>
             <ion-input type="email" formControlName="email"></ion-input>
