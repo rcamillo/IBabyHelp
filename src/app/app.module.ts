@@ -26,7 +26,6 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CadastroMedicoPage } from '../pages/cadastro-medico/cadastro-medico';
 import { CadastroVacinaPage } from '../pages/cadastro-vacina/cadastro-vacina';
 import { CadastroAmamentacaoPage } from '../pages/cadastro-amamentacao/cadastro-amamentacao';
-import { AtualizaUsuarioPage } from '../pages/atualiza-usuario/atualiza-usuario';
 
 import { DicasPage } from '../pages/dicas/dicas';
 import { LoginPage } from '../pages/login/login';
@@ -64,7 +63,6 @@ const config = {
     LoginPage,
     TabsPage,
     PerfilPage,
-    AtualizaUsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -89,7 +87,6 @@ const config = {
     LoginPage,
     TabsPage,
     PerfilPage,
-    AtualizaUsuarioPage,
   ],
   providers: [
     StatusBar,

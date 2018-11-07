@@ -9,7 +9,7 @@
         <ion-list>
   
           <ion-item class="item-trns">
-            <ion-label floating>Dia</ion-label>
+            <ion-label fixed>Dia</ion-label>
             <ion-datetime displayFormat="DD/MM/YYYY" formControlName="diaAmamentacao"></ion-datetime>
           </ion-item>
           <ion-item *ngIf="!form.controls.diaAmamentacao.valid && (form.controls.diaAmamentacao.dirty || form.controls.diaAmamentacao.touched)" color="danger">
@@ -19,7 +19,7 @@
           </ion-item>
   
           <ion-item class="item-trns">
-            <ion-label floating>Hora de Inicio</ion-label>
+            <ion-label fixed>Hora de Inicio</ion-label>
             <ion-datetime displayFormat="HH:mm" formControlName="inicioAmamentacao"></ion-datetime>
           </ion-item>
           <ion-item *ngIf="!form.controls.inicioAmamentacao.valid && (form.controls.inicioAmamentacao.dirty || form.controls.inicioAmamentacao.touched)" color="danger">
@@ -29,7 +29,7 @@
           </ion-item>
   
           <ion-item class="item-trns">
-            <ion-label floating>Hora de Termino</ion-label>
+            <ion-label fixed>Hora de Termino</ion-label>
             <ion-datetime displayFormat="HH:mm" formControlName="terminoAmamentacao"></ion-datetime>
           </ion-item>
           <ion-item *ngIf="!form.controls.terminoAmamentacao.valid && (form.controls.terminoAmamentacao.dirty || form.controls.terminoAmamentacao.touched)" color="danger">
@@ -39,7 +39,7 @@
           </ion-item>
       
           <ion-item class="item-trns">
-            <ion-label floating>Observações</ion-label>
+            <ion-label fixed>Observações</ion-label>
             <ion-input type="tel" formControlName="observacao"></ion-input>
           </ion-item>
   

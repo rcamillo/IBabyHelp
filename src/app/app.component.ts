@@ -18,6 +18,7 @@ export class MyApp {
 
   public listagemUsuario: Observable<any[]>;
   public uiduser: string;
+  public usuario: any;
 
   constructor
     (
@@ -36,6 +37,7 @@ export class MyApp {
               // está logado:
             this.rootPage = TabsPage;
               this.uiduser = this.afAuth.auth.currentUser.uid;
+              this.usuario = this.listagemUsuario;
 
           }
           else {

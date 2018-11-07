@@ -28,9 +28,7 @@ export class UsuarioProvider {
         this.afAuth.auth.createUserWithEmailAndPassword(usuario.email, usuario.senha).then((resolve) => { 
           let iduser = resolve.user.uid;
           let key: string;
-
-          key = this.db.list(this.PATH).push({iduser: iduser, nome: usuario.nome, email: usuario.email, senha: usuario.senha, babyname: usuario.babyname, sexo: usuario.sexo, babyDate: usuario.babyDate}).key;
-
+          key = this.db.list(this.PATH).push({iduser: iduser, nome: usuario.nome, email: usuario.email, babyname: usuario.babyname, sexo: usuario.sexo, babyDate: usuario.babyDate}).key;
           this.db.list(this.PATH)
          .update(key, {key:key})
           .catch((e) => reject(e));
