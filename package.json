@@ -23,7 +23,8 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/camera": "^4.16.0",
     "@ionic-native/core": "~4.12.0",
-    "@ionic-native/image-picker": "^4.16.0",
+    "@ionic-native/crop": "^4.17.0",
+    "@ionic-native/image-picker": "^4.17.0",
     "@ionic-native/splash-screen": "~4.12.0",
     "@ionic-native/status-bar": "~4.12.0",
     "@ionic/pro": "2.0.3",
@@ -56,6 +57,10 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
+      "com.synconset.imagepicker": {
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message"
+      },
+      "cordova-plugin-crop": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -75,7 +80,8 @@
     },
     "platforms": [
       "browser",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

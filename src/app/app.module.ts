@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire';
 //import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AgendaPage } from '../pages/agenda/agenda';
@@ -36,6 +38,10 @@ import { MedicoProvider } from '../providers/medico/medico';
 import { VacinaProvider } from '../providers/vacina/vacina';
 import { AmamentacaoProvider } from '../providers/amamentacao/amamentacao';
 import { UsuarioProvider } from '../providers/usuario/usuario';
+
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Crop } from '@ionic-native/crop';
+import * as firebase from "firebase";
 
 const config = {
   apiKey: "AIzaSyA_gfv_QCjE7fikvzTKz3HGzT-HQBhNixk",
@@ -68,7 +74,8 @@ const config = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -96,6 +103,8 @@ const config = {
     AmamentacaoProvider,
     UsuarioProvider,
     Camera,
+    ImagePicker,
+    Crop,
   ]
 })
 export class AppModule {}
