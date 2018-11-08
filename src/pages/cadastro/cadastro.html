@@ -17,9 +17,11 @@
                   -->
                 </div>
               </ion-col>
-              <button ion-button only-icon (click)="abreCamera()">
+              <ion-col class="botao-foto" col-1>
+              <button ion-button only-icon small (click)="abreCamera()">
                 <ion-icon name="ios-camera"></ion-icon>
               </button>
+            </ion-col>
             </ion-row>
           </ion-item>
         </ion-list>
@@ -36,13 +38,13 @@
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
         <ion-item class="item-trns">
-<<<<<<< HEAD
           <ion-label fixed>Senha</ion-label>
-          <ion-input type="password" pattern=".{6,}" title="Minimo de 6 caracteres" formControlName="senha"></ion-input>
-=======
-          <ion-label >Senha</ion-label>
           <ion-input type="password" formControlName="senha"></ion-input>
->>>>>>> ca669d160f0fff58a7a5ad2eeb2a06beb74cb66c
+        </ion-item>
+        <ion-item *ngIf="!form.controls.senha.valid && (form.controls.senha.dirty || form.controls.senha.touched)" color="danger">
+          <div [hidden]="!form.controls.senha.errors.required">
+           Minino de 6 Caracteres
+          </div>
         </ion-item>
 
         <ion-item class="item-trns">

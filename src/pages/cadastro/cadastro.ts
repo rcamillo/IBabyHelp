@@ -66,13 +66,13 @@ export class CadastroPage {
     let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.form = this.formBuilder.group({
       key: [this.usuario.key],
-      nome: [this.usuario.nome, Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(15)],
-      email: [this.usuario.email, Validators.required, Validators.pattern(EMAILPATTERN)],
-      senha: [this.usuario.senha, Validators.required, Validators.minLength(6), Validators.maxLength(12)],
+      nome: [this.usuario.nome, Validators.compose([Validators.maxLength(15), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      email: [this.usuario.email, Validators.compose([Validators.pattern(EMAILPATTERN), Validators.required])],
+      senha: [this.usuario.senha, Validators.compose([Validators.minLength(6),Validators.maxLength(12), Validators.required])],
       babyname: [this.usuario.babyname, Validators.required],
       sexo: [this.usuario.sexo, Validators.required],
       babyDate: [this.usuario.babyDate, Validators.required],
-      fotoPerfil: [imagem, Validators.required]
+      fotoPerfil: [imagem]
     });
   }
 
