@@ -63,11 +63,12 @@ export class CadastroPage {
   }
 
   createForm(imagem) {
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.form = this.formBuilder.group({
       key: [this.usuario.key],
-      nome: [this.usuario.nome, Validators.required],
-      email: [this.usuario.email, Validators.required],
-      senha: [this.usuario.senha, Validators.required],
+      nome: [this.usuario.nome, Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(15)],
+      email: [this.usuario.email, Validators.required, Validators.pattern(EMAILPATTERN)],
+      senha: [this.usuario.senha, Validators.required, Validators.minLength(6), Validators.maxLength(12)],
       babyname: [this.usuario.babyname, Validators.required],
       sexo: [this.usuario.sexo, Validators.required],
       babyDate: [this.usuario.babyDate, Validators.required],
@@ -97,4 +98,5 @@ export class CadastroPage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad CadastroPage");
   }
+
 }

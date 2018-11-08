@@ -33,7 +33,6 @@ export class LoginPage {
 
     this.afAuth.auth.signInWithEmailAndPassword(email, senha)
       .then((result) => {
-      // alert(result.user.uid);
       })
       .catch((error) => {
       })

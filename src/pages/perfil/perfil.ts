@@ -42,7 +42,8 @@ export class PerfilPage {
     this.usuario = this.navParams.data.usuario || {};
     this.listagemUsuario = db.list("/usuario/").valueChanges();
     this.uiduser = this.afAuth.auth.currentUser.uid;
-    this.createForm((this.fotoPerfilNew = null));
+    this.fotoPerfilNew = null;
+    this.createForm((this.fotoPerfilNew));
   }
 
   public logout(): void {
@@ -71,7 +72,6 @@ export class PerfilPage {
         // If it's base64 (DATA_URL):
         let base64Image = "data:image/jpeg;base64," + imageData;
         this.fotoPerfilNew = base64Image;
-        console.log(this.fotoPerfilNew);
         this.createForm(this.fotoPerfilNew);
       },
       err => {
@@ -84,8 +84,8 @@ export class PerfilPage {
     if(this.fotoPerfilNew == null){
     this.form = this.formBuilder.group({
       key: [this.usuario.key],
-      nome: [this.usuario.nome, Validators.required],
-      babyname: [this.usuario.babyname, Validators.required],
+      nome: [this.usuario.nome, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(15)],
+      babyname: [this.usuario.babyname, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3), Validators.maxLength(15)],
       sexo: [this.usuario.sexo, Validators.required],
       babyDate: [this.usuario.babyDate, Validators.required],
       foto: [this.usuario.image]
