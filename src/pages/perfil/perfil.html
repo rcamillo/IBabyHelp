@@ -1,84 +1,103 @@
-<ion-header>
-
-</ion-header>
+<ion-header> </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-list>
+      <ion-item-sliding *ngFor="let u of (listagemUsuario | async)">
+        <ion-item *ngIf="uiduser == u.iduser" disable>
+          <ion-row>
+            <ion-col col-4>
+              <div *ngIf="fotoPerfilNew; else: NovaFoto">
+                <img [src]="fotoPerfilNew" />
+                <!--
+                  <img src="https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png">
+                -->
+              </div>
+              <ng-template #NovaFoto><img [src]="u.fotoPerfil"/></ng-template>
+            </ion-col>
+            <ion-col padding-top col-8>
+              <h1 ion-text class="no-margin bold text-white">{{ u.nome }}</h1>
+              <span ion-text color="dark">{{ u.email }}</span>
+            </ion-col>
+          </ion-row>
 
-    <ion-grid>
-        <ion-list>
-          <ion-item-sliding *ngFor='let u of listagemUsuario | async'> 
-            <ion-item *ngIf='uiduser == u.iduser' disable>
+          <ion-row no-padding>
+            <ion-col no-padding>
+              <button ion-button icon-left small full (click)="editUsuario(u)">
+                <ion-icon name="contact"></ion-icon>
+                Editar Usuario
+              </button>
+            </ion-col>
+            <ion-col no-padding class="column">
+              <button
+                ion-button
+                icon-left
+                small
+                full
+                color="danger"
+                (click)="logout()"
+              >
+                <ion-icon name="log-out"></ion-icon>
+                Sair
+              </button>
+            </ion-col>
+          </ion-row>
+          <button ion-button (click)="abreCamera()">Teste</button>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-grid>
 
-              <ion-row>
-                <ion-col col-4>
-                    <div>
-                      <img src="https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png">
-                    </div>
-                </ion-col>
-                <ion-col padding-top col-8>
-                  <h1 ion-text class="no-margin bold text-white">
-                    {{u.nome}}
-                  </h1>
-                  <span ion-text color="dark">{{u.email}}</span>
-                </ion-col>
-              </ion-row>
-  
-              <ion-row no-padding>
-                <ion-col no-padding>
-                  <button ion-button icon-left small full (click)="editUsuario(u)">
-                    <ion-icon name="contact"></ion-icon>
-                    Editar Usuario
-                  </button>
-                </ion-col>
-                <ion-col no-padding class="column">
-                  <button ion-button icon-left small full color="danger" (click)="logout()">
-                    <ion-icon name="log-out"></ion-icon>
-                    Sair
-                  </button>
-                </ion-col>
-              </ion-row>
+  <form [formGroup]="form">
+    <div *ngFor="let u of (listagemUsuario | async)">
+      <div *ngIf="uiduser == u.iduser">
+        <ion-item>
+          <ion-label fixed>Nome</ion-label>
+          <ion-input
+            type="text"
+            placeholder="{{u.nome}}"
+            formControlName="nome"
+          ></ion-input>
+        </ion-item>
 
-            </ion-item>
-          </ion-item-sliding>
-        </ion-list>
-      </ion-grid>
+        <ion-item>
+          <ion-label fixed>Nome do Bebe</ion-label>
+          <ion-input
+            type="text"
+            placeholder="{{u.babyname}}"
+            formControlName="babyname"
+          ></ion-input>
+        </ion-item>
 
-    <form [formGroup]="form">
-    
-      <div *ngFor='let u of listagemUsuario | async' >
-        <div *ngIf='uiduser == u.iduser'> 
-    
-          <ion-item>
-              <ion-label fixed>Nome</ion-label>
-              <ion-input type="text" placeholder="{{u.nome}}" formControlName="nome"></ion-input>
-          </ion-item>
+        <ion-item>
+          <ion-label fixed>Sexo</ion-label>
+          <ion-select formControlName="sexo" placeholder="{{u.sexo}}">
+            <ion-option value="Feminino">Feminino</ion-option>
+            <ion-option value="Masculino">Masculino</ion-option>
+          </ion-select>
+        </ion-item>
 
-
-          <ion-item>
-            <ion-label fixed>Nome do Bebe</ion-label>
-            <ion-input type="text" placeholder="{{u.babyname}}" formControlName="babyname"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label fixed>Sexo</ion-label>
-            <ion-select  formControlName="sexo" placeholder="{{u.sexo}}"> 
-              <ion-option value="Feminino">Feminino</ion-option>
-              <ion-option value="Masculino">Masculino</ion-option>
-            </ion-select>					
-          </ion-item>
-
-          <ion-item>
-            <ion-label fixed>Data de Nascimento</ion-label>
-            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="babyDate" placeholder="{{u.babyDate}}"></ion-datetime>
-          </ion-item>
-
-        </div>
+        <ion-item>
+          <ion-label fixed>Data de Nascimento</ion-label>
+          <ion-datetime
+            displayFormat="DD/MM/YYYY"
+            formControlName="babyDate"
+            placeholder="{{u.babyDate}}"
+          ></ion-datetime>
+        </ion-item>
       </div>
-    
-      <button ion-button round outline color="dark" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
-        Atualizar
-      </button>
+    </div>
 
-    </form>
-
-</ion-content> 
+    <button
+      ion-button
+      round
+      outline
+      color="dark"
+      type="submit"
+      [disabled]="!form.valid"
+      (click)="onSubmit()"
+    >
+      Atualizar
+    </button>
+  </form>
+</ion-content>

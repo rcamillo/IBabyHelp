@@ -1,50 +1,77 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Cadastrando...</ion-title>
-    </ion-navbar>
-  </ion-header>
-  <ion-content class="login-container">
-    <div class="login-container">
-  
-      <form [formGroup]="form">
-      
-        <ion-list>
-          <ion-item class="item-trns">
-            <ion-label fixed>Nome</ion-label>
-            <ion-input type="text" formControlName="nome"></ion-input>
-          </ion-item>
+  <ion-navbar> <ion-title>Cadastrando...</ion-title> </ion-navbar>
+</ion-header>
 
-          <ion-item class="item-trns">
-            <ion-label fixed>Email</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
-          </ion-item>
-          <ion-item class="item-trns">
-            <ion-label fixed>Senha</ion-label>
-            <ion-input type="password" formControlName="senha"></ion-input>
-          </ion-item>
-  
-          <ion-item class="item-trns">
-            <ion-label fixed>Nome do Bebe</ion-label>
-            <ion-input type="text" formControlName="babyname"></ion-input>
-          </ion-item>
-          <ion-item class="item-trns">
-            <ion-label fixed>Sexo</ion-label>
-            <ion-select formControlName="sexo"> 
-              <ion-option value="Feminino">Feminino</ion-option>
-              <ion-option value="Masculino">Masculino</ion-option>
-            </ion-select>					
-          </ion-item>
-          <ion-item class="item-trns">
-            <ion-label fixed>Data de Nascimento</ion-label>
-            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="babyDate"></ion-datetime>
+<ion-content class="login-container">
+  <div class="login-container">
+    <form [formGroup]="form">
+      <ion-grid>
+        <ion-list>
+          <ion-item>
+            <ion-row>
+              <ion-col col-4>
+                <div>
+                  <img [src]="fotoPerfil" />
+                  <!--
+                    <img src="https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png">
+                  -->
+                </div>
+              </ion-col>
+              <button ion-button only-icon (click)="abreCamera()">
+                <ion-icon name="ios-camera"></ion-icon>
+              </button>
+              {{ fotoPerfil }}
+            </ion-row>
           </ion-item>
         </ion-list>
-        
-        <button ion-button round outline color="dark" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
-          Salvar
-        </button>
-  
-      </form>
-    </div>
-  
-  </ion-content>
+      </ion-grid>
+
+      <ion-list>
+        <ion-item class="item-trns">
+          <ion-label fixed>Nome</ion-label>
+          <ion-input type="text" formControlName="nome"></ion-input>
+        </ion-item>
+
+        <ion-item class="item-trns">
+          <ion-label fixed>Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item class="item-trns">
+          <ion-label fixed>Senha</ion-label>
+          <ion-input type="password" formControlName="senha"></ion-input>
+        </ion-item>
+
+        <ion-item class="item-trns">
+          <ion-label fixed>Nome do Bebe</ion-label>
+          <ion-input type="text" formControlName="babyname"></ion-input>
+        </ion-item>
+        <ion-item class="item-trns">
+          <ion-label fixed>Sexo</ion-label>
+          <ion-select formControlName="sexo">
+            <ion-option value="Feminino">Feminino</ion-option>
+            <ion-option value="Masculino">Masculino</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="item-trns">
+          <ion-label fixed>Data de Nascimento</ion-label>
+          <ion-datetime
+            displayFormat="DD/MM/YYYY"
+            formControlName="babyDate"
+          ></ion-datetime>
+        </ion-item>
+      </ion-list>
+
+      <button
+        ion-button
+        round
+        outline
+        color="dark"
+        type="submit"
+        [disabled]="!form.valid"
+        (click)="onSubmit()"
+      >
+        Salvar
+      </button>
+    </form>
+  </div>
+</ion-content>
