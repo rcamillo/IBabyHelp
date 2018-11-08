@@ -40,9 +40,10 @@ export class CadastroPage {
     //options do role
     const options: CameraOptions = {
       destinationType: this.camera.DestinationType.DATA_URL,
-      targetWidth: 500,
-      targetHeight: 500,
-      allowEdit: true
+      targetWidth: 400,
+      targetHeight: 600,
+      allowEdit: true,
+      correctOrientation: true,
       //encodingType: this.camera.EncodingType.JPEG,
       //mediaType: this.camera.MediaType.PICTURE
     };

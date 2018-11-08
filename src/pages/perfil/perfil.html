@@ -5,23 +5,36 @@
     <ion-list>
       <ion-item-sliding *ngFor="let u of (listagemUsuario | async)">
         <ion-item *ngIf="uiduser == u.iduser" disable>
-          <ion-row>
+          <ion-row padding-top>
             <ion-col col-4>
-              <div *ngIf="fotoPerfilNew; else: NovaFoto">
-                <img [src]="fotoPerfilNew" />
+              <div *ngIf="fotoPerfilNew == null; else: NovaFoto">
+                <img [src]="u.fotoPerfil" />
                 <!--
                   <img src="https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png">
                 -->
+                <ion-col col-1 class="imagePerfil">
+                    <button ion-button only-icon small (click)="abreCamera()">
+                      <ion-icon name="ios-camera"></ion-icon>
+                    </button>
+                  </ion-col>
               </div>
-              <ng-template #NovaFoto><img [src]="u.fotoPerfil"/></ng-template>
+              <ng-template #NovaFoto>
+                <div>
+                <img [src]="fotoPerfilNew"/>
+                <ion-col col-1 class="imagePerfil">
+                    <button ion-button only-icon small (click)="abreCamera()">
+                      <ion-icon name="ios-camera"></ion-icon>
+                    </button>
+                  </ion-col>
+                </div>
+              </ng-template>
             </ion-col>
             <ion-col padding-top col-8>
               <h1 ion-text class="no-margin bold text-white">{{ u.nome }}</h1>
               <span ion-text color="dark">{{ u.email }}</span>
             </ion-col>
           </ion-row>
-
-          <ion-row no-padding>
+          <ion-row no-padding class="buttons-profile">
             <ion-col no-padding>
               <button ion-button icon-left small full (click)="editUsuario(u)">
                 <ion-icon name="contact"></ion-icon>
@@ -42,7 +55,6 @@
               </button>
             </ion-col>
           </ion-row>
-          <button ion-button (click)="abreCamera()">Teste</button>
         </ion-item>
       </ion-item-sliding>
     </ion-list>

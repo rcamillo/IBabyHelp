@@ -42,7 +42,7 @@ export class PerfilPage {
     this.usuario = this.navParams.data.usuario || {};
     this.listagemUsuario = db.list("/usuario/").valueChanges();
     this.uiduser = this.afAuth.auth.currentUser.uid;
-    this.createForm((this.fotoPerfilNew = " "));
+    this.createForm((this.fotoPerfilNew = null));
   }
 
   public logout(): void {
@@ -58,8 +58,9 @@ export class PerfilPage {
     const options: CameraOptions = {
       destinationType: this.camera.DestinationType.DATA_URL,
       targetWidth: 400,
-      targetHeight: 500,
-      allowEdit: true
+      targetHeight: 600,
+      allowEdit: true,
+      correctOrientation: true,
       //encodingType: this.camera.EncodingType.JPEG,
       //mediaType: this.camera.MediaType.PICTURE
     };
@@ -80,6 +81,16 @@ export class PerfilPage {
   }
 
   createForm(image) {
+    if(this.fotoPerfilNew == null){
+    this.form = this.formBuilder.group({
+      key: [this.usuario.key],
+      nome: [this.usuario.nome, Validators.required],
+      babyname: [this.usuario.babyname, Validators.required],
+      sexo: [this.usuario.sexo, Validators.required],
+      babyDate: [this.usuario.babyDate, Validators.required],
+      foto: [this.usuario.image]
+    });
+  }else{
     image = null;
     image = this.fotoPerfilNew;
     this.form = this.formBuilder.group({
@@ -88,8 +99,9 @@ export class PerfilPage {
       babyname: [this.usuario.babyname, Validators.required],
       sexo: [this.usuario.sexo, Validators.required],
       babyDate: [this.usuario.babyDate, Validators.required],
-      foto: [image, Validators.required]
+      foto: [image]
     });
+  };
   }
 
   onSubmit() {

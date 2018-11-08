@@ -6,11 +6,11 @@
   <div class="login-container">
     <form [formGroup]="form">
       <ion-grid>
-        <ion-list>
+        <ion-list no-lines>
           <ion-item>
             <ion-row>
               <ion-col col-4>
-                <div>
+                <div *ngIf="fotoPerfil != null">
                   <img [src]="fotoPerfil" />
                   <!--
                     <img src="https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png">
@@ -20,7 +20,6 @@
               <button ion-button only-icon (click)="abreCamera()">
                 <ion-icon name="ios-camera"></ion-icon>
               </button>
-              {{ fotoPerfil }}
             </ion-row>
           </ion-item>
         </ion-list>
