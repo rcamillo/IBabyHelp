@@ -9,7 +9,7 @@
         <ion-list>
   
           <ion-item class="item-trns">
-            <ion-label fixed>Nome do Médico</ion-label>
+            <ion-label >Nome do Médico</ion-label>
             <ion-input type="text" formControlName="nomeMedico"></ion-input>
           </ion-item>
           <ion-item *ngIf="!form.controls.nomeMedico.valid && (form.controls.nomeMedico.dirty || form.controls.nomeMedico.touched)" color="danger">
@@ -19,7 +19,7 @@
           </ion-item>
   
           <ion-item class="item-trns">
-            <ion-label fixed>Data da Consulta</ion-label>
+            <ion-label >Data da Consulta</ion-label>
             <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataConsulta"></ion-datetime>
           </ion-item>
           <ion-item *ngIf="!form.controls.dataConsulta.valid && (form.controls.dataConsulta.dirty || form.controls.dataConsulta.touched)" color="danger">
@@ -29,7 +29,7 @@
           </ion-item>
   
           <ion-item class="item-trns">
-            <ion-label fixed>Hora da Consulta</ion-label>
+            <ion-label >Hora da Consulta</ion-label>
             <ion-datetime displayFormat="HH:mm" formControlName="horaConsulta"></ion-datetime>
           </ion-item>
           <ion-item *ngIf="!form.controls.horaConsulta.valid && (form.controls.horaConsulta.dirty || form.controls.horaConsulta.touched)" color="danger">
@@ -39,7 +39,7 @@
           </ion-item>
       
           <ion-item class="item-trns">
-            <ion-label fixed>Observações</ion-label>
+            <ion-label >Observações</ion-label>
             <ion-input type="text" formControlName="observacao"></ion-input>
           </ion-item>
   

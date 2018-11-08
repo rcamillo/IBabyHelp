@@ -10,7 +10,7 @@
         <ion-list>
   
           <ion-item class="item-trns">
-            <ion-label fixed>Nome da Vacina</ion-label>
+            <ion-label >Nome da Vacina</ion-label>
             <ion-input type="text" formControlName="nomeVacina"></ion-input>
           </ion-item>
           <ion-item *ngIf="!form.controls.nomeVacina.valid && (form.controls.nomeVacina.dirty || form.controls.nomeVacina.touched)" color="danger">
@@ -20,7 +20,7 @@
           </ion-item>
   
           <ion-item class="item-trns">
-            <ion-label fixed>Data de Aplicação</ion-label>
+            <ion-label >Data de Aplicação</ion-label>
             <ion-select formControlName="aplicacao">
               <ion-option value="Ao nascer">Ao nascer</ion-option>
               <ion-option value="1º Mês">1º Mês</ion-option>
@@ -42,7 +42,7 @@
           </ion-item>
   
           <ion-item class="item-trns">
-            <ion-label fixed>Dose: </ion-label>
+            <ion-label >Dose: </ion-label>
               <ion-select formControlName="dose">
                 <ion-option value="Única">Única</ion-option>
                 <ion-option value="1º dose">1º dose</ion-option>
