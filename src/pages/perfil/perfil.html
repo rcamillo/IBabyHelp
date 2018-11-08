@@ -9,19 +9,16 @@
             <ion-col col-4>
               <div *ngIf="fotoPerfilNew == null; else: NovaFoto">
                 <img [src]="u.fotoPerfil" />
-                <!--
-                  <img src="https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png">
-                -->
                 <ion-col col-1 class="imagePerfil">
-                    <button ion-button only-icon small (click)="abreCamera()">
-                      <ion-icon name="ios-camera"></ion-icon>
-                    </button>
-                  </ion-col>
+                  <button ion-button only-icon small (click)="abreCamera()">
+                    <ion-icon name="ios-camera"></ion-icon>
+                  </button>
+                </ion-col>
               </div>
               <ng-template #NovaFoto>
                 <div>
-                <img [src]="fotoPerfilNew"/>
-                <ion-col col-1 class="imagePerfil">
+                  <img [src]="fotoPerfilNew" />
+                  <ion-col col-1 class="imagePerfil">
                     <button ion-button only-icon small (click)="abreCamera()">
                       <ion-icon name="ios-camera"></ion-icon>
                     </button>
@@ -64,7 +61,7 @@
     <div *ngFor="let u of (listagemUsuario | async)">
       <div *ngIf="uiduser == u.iduser">
         <ion-item>
-          <ion-label fixed>Nome</ion-label>
+          <ion-label class="Label">Nome</ion-label>
           <ion-input
             type="text"
             placeholder="{{u.nome}}"
@@ -73,7 +70,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label fixed>Nome do Bebe</ion-label>
+          <ion-label class="Label">Nome do Bebe</ion-label>
           <ion-input
             type="text"
             placeholder="{{u.babyname}}"
@@ -82,7 +79,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label fixed>Sexo</ion-label>
+          <ion-label class="Label">Sexo</ion-label>
           <ion-select formControlName="sexo" placeholder="{{u.sexo}}">
             <ion-option value="Feminino">Feminino</ion-option>
             <ion-option value="Masculino">Masculino</ion-option>
@@ -90,7 +87,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label fixed>Data de Nascimento</ion-label>
+          <ion-label class="Label">Data de Nascimento</ion-label>
           <ion-datetime
             displayFormat="DD/MM/YYYY"
             formControlName="babyDate"
@@ -99,6 +96,8 @@
         </ion-item>
       </div>
     </div>
+
+  <br><br>
 
     <button
       ion-button
