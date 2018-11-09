@@ -19,10 +19,6 @@ import { UsuarioProvider } from "../../providers/usuario/usuario";
   templateUrl: "cadastro.html"
 })
 export class CadastroPage {
-<<<<<<< HEAD
-  public listvacinas: any[];
-=======
->>>>>>> parent of 34a5de4... Atualizações
   public fotoPerfil: any;
   form: FormGroup;
   usuario: any;
@@ -37,15 +33,6 @@ export class CadastroPage {
     public camera: Camera
   ) {
     this.usuario = this.navParams.data.usuario || {};
-<<<<<<< HEAD
-    let sub = db
-      .list("/agenda/vacina")
-      .valueChanges()
-      .subscribe(vacinas => {
-        this.listvacinas = vacinas;
-      });
-=======
->>>>>>> parent of 34a5de4... Atualizações
     this.createForm(this.fotoPerfil);
   }
 
@@ -56,7 +43,7 @@ export class CadastroPage {
       targetWidth: 400,
       targetHeight: 600,
       allowEdit: true,
-      correctOrientation: true,
+      correctOrientation: true
       //encodingType: this.camera.EncodingType.JPEG,
       //mediaType: this.camera.MediaType.PICTURE
     };
@@ -79,24 +66,40 @@ export class CadastroPage {
     let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.form = this.formBuilder.group({
       key: [this.usuario.key],
-      nome: [this.usuario.nome, Validators.compose([Validators.maxLength(15), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      email: [this.usuario.email, Validators.compose([Validators.pattern(EMAILPATTERN), Validators.required])],
-      senha: [this.usuario.senha, Validators.compose([Validators.minLength(6),Validators.maxLength(12), Validators.required])],
+      nome: [
+        this.usuario.nome,
+        Validators.compose([
+          Validators.maxLength(15),
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.required
+        ])
+      ],
+      email: [
+        this.usuario.email,
+        Validators.compose([
+          Validators.pattern(EMAILPATTERN),
+          Validators.required
+        ])
+      ],
+      senha: [
+        this.usuario.senha,
+        Validators.compose([
+          Validators.minLength(6),
+          Validators.maxLength(12),
+          Validators.required
+        ])
+      ],
       babyname: [this.usuario.babyname, Validators.required],
       sexo: [this.usuario.sexo, Validators.required],
       babyDate: [this.usuario.babyDate, Validators.required],
-<<<<<<< HEAD
       fotoPerfil: imagem
-=======
-      fotoPerfil: [imagem]
->>>>>>> parent of 34a5de4... Atualizações
     });
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.provider
-        .save(this.form.value, this.listvacinas)
+        .save(this.form.value)
         .then(() => {
           this.toast
             .create({ message: "Usuario salvo com sucesso.", duration: 3000 })
@@ -115,5 +118,4 @@ export class CadastroPage {
   ionViewDidLoad() {
     console.log("ionViewDidLoad CadastroPage");
   }
-
 }

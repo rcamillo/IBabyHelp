@@ -12,13 +12,6 @@ import { NgForm } from "@angular/forms";
 import { RecuperaSenhaPage } from "../recupera-senha/recupera-senha";
 import { CadastroPage } from "../cadastro/cadastro";
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: "page-login",
@@ -36,13 +29,6 @@ export class LoginPage {
     let email = form.value.email;
     let senha = form.value.senha;
 
-<<<<<<< HEAD
-    this.afAuth.auth.signInWithEmailAndPassword(email, senha)
-      .then((result) => {
-      })
-      .catch((error) => {
-      })
-=======
     this.afAuth.auth
       .signInWithEmailAndPassword(email, senha)
       .then(result => {})
@@ -55,7 +41,6 @@ export class LoginPage {
         });
         alert.present();
       });
->>>>>>> ca669d160f0fff58a7a5ad2eeb2a06beb74cb66c
   }
 
   public goToSignup(): void {

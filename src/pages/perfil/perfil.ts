@@ -25,7 +25,6 @@ export class PerfilPage {
   public fotoPerfilNew: any;
   form: FormGroup;
   usuario: any;
-  varCorrecao: any[] = null;
 
   public listagemUsuario: Observable<any[]>;
   public uiduser: string;
@@ -44,7 +43,7 @@ export class PerfilPage {
     this.listagemUsuario = db.list("/usuario/").valueChanges();
     this.uiduser = this.afAuth.auth.currentUser.uid;
     this.fotoPerfilNew = null;
-    this.createForm((this.fotoPerfilNew));
+    this.createForm(this.fotoPerfilNew);
   }
 
   public logout(): void {
@@ -62,7 +61,7 @@ export class PerfilPage {
       targetWidth: 400,
       targetHeight: 600,
       allowEdit: true,
-      correctOrientation: true,
+      correctOrientation: true
       //encodingType: this.camera.EncodingType.JPEG,
       //mediaType: this.camera.MediaType.PICTURE
     };
@@ -82,33 +81,43 @@ export class PerfilPage {
   }
 
   createForm(image) {
-    if(this.fotoPerfilNew == null){
-    this.form = this.formBuilder.group({
-      key: [this.usuario.key],
-      nome: [this.usuario.nome, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(15)],
-      babyname: [this.usuario.babyname, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3), Validators.maxLength(15)],
-      sexo: [this.usuario.sexo, Validators.required],
-      babyDate: [this.usuario.babyDate, Validators.required],
-      foto: [this.usuario.image]
-    });
-  }else{
-    image = null;
-    image = this.fotoPerfilNew;
-    this.form = this.formBuilder.group({
-      key: [this.usuario.key],
-      nome: [this.usuario.nome, Validators.required],
-      babyname: [this.usuario.babyname, Validators.required],
-      sexo: [this.usuario.sexo, Validators.required],
-      babyDate: [this.usuario.babyDate, Validators.required],
-      foto: [image]
-    });
-  };
+    if (this.fotoPerfilNew == null) {
+      this.form = this.formBuilder.group({
+        key: [this.usuario.key],
+        nome: [
+          this.usuario.nome,
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.minLength(4),
+          Validators.maxLength(15)
+        ],
+        babyname: [
+          this.usuario.babyname,
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.minLength(3),
+          Validators.maxLength(15)
+        ],
+        sexo: [this.usuario.sexo, Validators.required],
+        babyDate: [this.usuario.babyDate, Validators.required],
+        foto: [this.usuario.image]
+      });
+    } else {
+      image = null;
+      image = this.fotoPerfilNew;
+      this.form = this.formBuilder.group({
+        key: [this.usuario.key],
+        nome: [this.usuario.nome, Validators.required],
+        babyname: [this.usuario.babyname, Validators.required],
+        sexo: [this.usuario.sexo, Validators.required],
+        babyDate: [this.usuario.babyDate, Validators.required],
+        foto: image
+      });
+    }
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.provider
-        .save(this.form.value, this.varCorrecao)
+        .save(this.form.value)
         .then(() => {
           this.toast
             .create({ message: "Usuario salvo com sucesso.", duration: 3000 })

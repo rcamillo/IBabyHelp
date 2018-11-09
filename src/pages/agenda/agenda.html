@@ -19,7 +19,7 @@
     <ion-list *ngSwitchCase="'medico'">
       <div>
         <ion-item-sliding *ngFor="let m of (listmedicos | async)">
-          <ion-item class="item-trns" *ngIf="uiduser == m.uiduser" disable>
+          <ion-item class="item-trns" *ngIf="uiduser == m.uiduser">
             <ion-avatar item-start>
               <img
                 src="https://png.pngtree.com/element_origin_min_pic/17/08/30/ee5309fb3e3b6432301293e732761685.jpg"
@@ -50,13 +50,13 @@
     <ion-list *ngSwitchCase="'vacinas'">
       <div>
         <ion-item-sliding *ngFor="let v of (listvacinas | async)">
-          <ion-item class="item-trns">
+          <ion-item class="item-trns" *ngIf="uiduser == v.uiduser">
             <ion-avatar item-start>
               <img
                 src="https://www.tribunapr.com.br/wp-content/uploads/sites/1/2018/08/vacina-poliomelite-825x509.jpg?a86372"
               />
             </ion-avatar>
-            <h2>Nome da Vacina: {{ v.aplicacao }}</h2>
+            <h2>Nome da Vacina: {{ v.nomeVacina }}</h2>
             <h3>Aplicar: {{ v.aplicacao }}</h3>
             <p>Dose: {{ v.dose }}</p>
           </ion-item>

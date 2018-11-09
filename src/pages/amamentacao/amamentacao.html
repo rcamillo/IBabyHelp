@@ -1,35 +1,49 @@
 <ion-header color="primary">
-    <ion-navbar hideBackButton>
-      <button ion-button menuToggle>
-        <ion-icon name="menu" color="primary"></ion-icon>
-      </button>
-      <ion-title>Amamentação</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content class="login-container">
-    <br>
-    <div>
-      <ion-list>
-        <ion-item-sliding *ngFor='let a of listAmamentacao | async'> 
-          <ion-item class="item-trns" *ngIf='uiduser == a.uiduser' disable>
-            <ion-avatar item-start>
-              <img src="https://vivamelhoronline.files.wordpress.com/2013/07/19-05-11_05_2005_alimentacao_dez-motivos-para-amamentar.jpg?w=500&h=276"/>
-            </ion-avatar>
-            <h2>Data: {{a.diaAmamentacao}}</h2>
-            <h3>Inicio: {{a.inicioAmamentacao}}</h3>
-            <p>Termino : {{a.terminoAmamentacao}}</p>
-          </ion-item>
-  
-          <ion-item-options>
-            <button ion-button color="danger" (click)="removeAmamentacao(a.key)">Apagar</button>
-            <button ion-button color="primary" (click)="editAmamentacao(a)">Editar</button>
-          </ion-item-options>
-  
-        </ion-item-sliding>
-        <br>
-        <button color="secondary" ion-button round (click)="newAmamentacao()">Nova Amamentação</button>
-      </ion-list>
-  
-    </div>
-  </ion-content>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="primary"></ion-icon>
+    </button>
+    <ion-title>Amamentação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-container">
+  <br />
+  <div>
+    <ion-list>
+      <ion-item-sliding *ngFor="let a of (listAmamentacao | async)">
+        <ion-item class="item-trns" *ngIf="uiduser == a.uiduser" disable>
+          <ion-avatar item-start>
+            <img
+              src="https://vivamelhoronline.files.wordpress.com/2013/07/19-05-11_05_2005_alimentacao_dez-motivos-para-amamentar.jpg?w=500&h=276"
+            />
+          </ion-avatar>
+          <h2>Data: {{ a.diaAmamentacao }}</h2>
+          <h3>Inicio: {{ a.inicioAmamentacao }}</h3>
+          <p>Termino : {{ a.terminoAmamentacao }}</p>
+        </ion-item>
+
+        <ion-item-options>
+          <button ion-button color="danger" (click)="removeAmamentacao(a.key)">
+            Apagar
+          </button>
+          <button ion-button color="primary" (click)="editAmamentacao(a)">
+            Editar
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      <br />
+      <ion-fab right bottom>
+        <button
+          color="secondary"
+          only-icon
+          ion-fab
+          mini
+          (click)="newAmamentacao()"
+        >
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-list>
+  </div>
+</ion-content>

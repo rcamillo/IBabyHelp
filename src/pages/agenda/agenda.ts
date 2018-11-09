@@ -1,41 +1,30 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ToastController
+} from "ionic-angular";
 
-//import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-<<<<<<< HEAD
-import { AngularFireDatabase, AngularFireObject } from "angularfire2/database";
+import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
-=======
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from '@angular/fire/auth';
->>>>>>> parent of 34a5de4... Atualizações
 
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
-import { CadastroMedicoPage } from '../cadastro-medico/cadastro-medico';
-import { CadastroVacinaPage } from '../cadastro-vacina/cadastro-vacina';
+import { CadastroMedicoPage } from "../cadastro-medico/cadastro-medico";
+import { CadastroVacinaPage } from "../cadastro-vacina/cadastro-vacina";
 
-<<<<<<< HEAD
 import { MedicoProvider } from "../../providers/medico/medico";
 import { VacinaProvider } from "../../providers/vacina/vacina";
-import { UsuarioProvider } from "../../providers/usuario/usuario";
-=======
-import { MedicoProvider } from '../../providers/medico/medico';
-import { VacinaProvider } from '../../providers/vacina/vacina';
->>>>>>> parent of 34a5de4... Atualizações
 
-import { vacinaModel } from "../../Models/vacina";
 @IonicPage()
 @Component({
-  selector: 'page-agenda',
-  templateUrl: 'agenda.html',
+  selector: "page-agenda",
+  templateUrl: "agenda.html"
 })
 export class AgendaPage {
-  todoDataRef$: AngularFireObject<vacinaModel>;
-  itenVacina = {} as vacinaModel;
   public listvacinas: Observable<any[]>;
   public listmedicos: Observable<any[]>;
-  public listUser: Observable<any[]>;
   public uiduser: string;
 
   constructor(
@@ -44,45 +33,12 @@ export class AgendaPage {
     private toast: ToastController,
     private providervacina: VacinaProvider,
     private providermedico: MedicoProvider,
-<<<<<<< HEAD
     private db: AngularFireDatabase,
-    public afAuth: AngularFireAuth,
-    public provider: UsuarioProvider
+    public afAuth: AngularFireAuth
   ) {
-    this.listUser = db.list("/usuario/").valueChanges();
     this.listmedicos = db.list("/agenda/medico").valueChanges();
-=======
-    private db : AngularFireDatabase,
-    public afAuth: AngularFireAuth) 
-  {
-    this.listmedicos = db.list('/agenda/medico').valueChanges();
-    this.listvacinas = db.list('/agenda/vacina').valueChanges();  
->>>>>>> parent of 34a5de4... Atualizações
     this.uiduser = afAuth.auth.currentUser.uid;
-    // if (this.provider.teste == null) {
-    //   console.log("usuario já cadastrado");
-    // } else {
-    //   const caminho = this.provider.teste;
-    //   console.log(caminho);
-
-    //   this.listvacinas = db
-    //     .list("/agenda/" + this.uiduser + "/vacinas/" + caminho + "/lista")
-    //     .valueChanges();
-    // }
-
-    // console.log(caminho);
-
-    // this.listvacinas = db
-    //   .list("/agenda/" + this.uiduser + "/vacinas/" + caminho + "/lista")
-    //   .valueChanges();
-
-    //   const Idvacina = this.navParams.get("todoId");
-    //   console.log(Idvacina);
-
-    //   afAuth.authState.subscribe(() => {
-    //     this.todoDataRef$ = this.db.object(`todo/${Idvacina}`);
-    //     console.log(this.todoDataRef$);
-    //   });
+    this.listvacinas = db.list("/agenda/vacina").valueChanges();
   }
 
   newVacina() {
@@ -94,7 +50,7 @@ export class AgendaPage {
   }
 
   editVacina(v: any) {
-    this.navCtrl.push(CadastroVacinaPage, { itenVacina: vacinaModel });
+    this.navCtrl.push(CadastroVacinaPage, { vacina: v });
   }
 
   editMedico(m: any) {
@@ -103,29 +59,45 @@ export class AgendaPage {
 
   removeVacina(key: string) {
     if (key) {
-      this.providervacina.remove(key)
+      this.providervacina
+        .remove(key)
         .then(() => {
-          this.toast.create({ message: 'Vacina removida com sucesso.', duration: 3000 }).present();
+          this.toast
+            .create({ message: "Vacina removida com sucesso.", duration: 3000 })
+            .present();
         })
         .catch(() => {
-          this.toast.create({ message: 'Falha ao remover o vacina.', duration: 3000 }).present();
+          this.toast
+            .create({ message: "Falha ao remover o vacina.", duration: 3000 })
+            .present();
         });
     }
   }
 
   removeMedico(key: string) {
     if (key) {
-      this.providermedico.remove(key)
+      this.providermedico
+        .remove(key)
         .then(() => {
-          this.toast.create({ message: 'Agenda médica removida com sucesso.', duration: 3000 }).present();
+          this.toast
+            .create({
+              message: "Agenda médica removida com sucesso.",
+              duration: 3000
+            })
+            .present();
         })
         .catch(() => {
-          this.toast.create({ message: 'Falha ao remover o agenda médica.', duration: 3000 }).present();
+          this.toast
+            .create({
+              message: "Falha ao remover o agenda médica.",
+              duration: 3000
+            })
+            .present();
         });
     }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AgendaPage');
+    console.log("ionViewDidLoad AgendaPage");
   }
 }
