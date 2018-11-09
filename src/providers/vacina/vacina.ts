@@ -1,19 +1,17 @@
 import { Injectable } from "@angular/core";
 
-import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
-/*
-  Generated class for the VacinaProvider provider.
+import { AngularFireDatabase } from "angularfire2/database";
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class VacinaProvider {
-  private PATH =
-    "/agenda/0E7tcctKarSd90h8hrY3grJ25Xw2/vacinas/-LQqIBQfL0zeTjb1xbjn/lista";
+  private PATH = "/agenda/vacina/";
+  uiduser: string;
 
-  constructor(private db: AngularFireDatabase, public auth: AngularFireAuth) {}
+  constructor(
+    private db: AngularFireDatabase,
+    public afAuth: AngularFireAuth
+  ) {}
 
   save(vacina: any) {
     return new Promise((resolve, reject) => {
@@ -28,8 +26,10 @@ export class VacinaProvider {
           .then(() => resolve())
           .catch(e => reject(e));
       } else {
+        this.uiduser = this.afAuth.auth.currentUser.uid;
         let key: string;
         key = this.db.list(this.PATH).push({
+          uiduser: this.uiduser,
           nomeVacina: vacina.nomeVacina,
           aplicacao: vacina.aplicacao,
           dose: vacina.dose

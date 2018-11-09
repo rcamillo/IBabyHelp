@@ -17,8 +17,6 @@ import { AngularFireModule } from "@angular/fire";
 
 import { AngularFireDatabaseModule } from "angularfire2/database";
 
-import { AngularFireStorageModule } from "angularfire2/storage";
-
 import { MyApp } from "./app.component";
 import { HomePage } from "../pages/home/home";
 import { AgendaPage } from "../pages/agenda/agenda";
@@ -71,8 +69,7 @@ const config = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

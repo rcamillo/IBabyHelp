@@ -12,13 +12,6 @@ import { NgForm } from "@angular/forms";
 import { RecuperaSenhaPage } from "../recupera-senha/recupera-senha";
 import { CadastroPage } from "../cadastro/cadastro";
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: "page-login",

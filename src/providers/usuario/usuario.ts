@@ -6,15 +6,13 @@ import { AngularFireAuth } from "@angular/fire/auth";
 @Injectable()
 export class UsuarioProvider {
   private PATH = `/usuario/`;
-  private pathVacinas = "/agenda/";
-  public teste: string;
 
   constructor(
     private db: AngularFireDatabase,
     public afAuth: AngularFireAuth
   ) {}
 
-  save(usuario: any, lista: any[]) {
+  save(usuario: any) {
     return new Promise((resolve, reject) => {
       if (usuario.key) {
         this.db
@@ -47,11 +45,6 @@ export class UsuarioProvider {
               .list(this.PATH)
               .update(key, { key: key })
               .catch(e => reject(e));
-            this.teste = this.db
-              .list(this.pathVacinas + iduser + "/vacinas/")
-              .push({
-                lista
-              }).key;
           })
           .catch(error => {});
       }

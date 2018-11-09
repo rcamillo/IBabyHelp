@@ -6,21 +6,16 @@ import {
   ToastController
 } from "ionic-angular";
 
-//import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-import { AngularFireDatabase, AngularFireObject  } from "angularfire2/database";
+import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 import { Observable } from "rxjs";
-//import { map } from "m";
 
 import { CadastroMedicoPage } from "../cadastro-medico/cadastro-medico";
 import { CadastroVacinaPage } from "../cadastro-vacina/cadastro-vacina";
 
 import { MedicoProvider } from "../../providers/medico/medico";
 import { VacinaProvider } from "../../providers/vacina/vacina";
-import { UsuarioProvider } from "../../providers/usuario/usuario";
-
-import { vacinaModel } from "../../Models/vacina";
 
 @IonicPage()
 @Component({
@@ -28,8 +23,6 @@ import { vacinaModel } from "../../Models/vacina";
   templateUrl: "agenda.html"
 })
 export class AgendaPage {
-  todoDataRef$: AngularFireObject<vacinaModel>;
-  itenVacina = {} as vacinaModel;
   public listvacinas: Observable<any[]>;
   public listmedicos: Observable<any[]>;
   public uiduser: string;
@@ -41,25 +34,11 @@ export class AgendaPage {
     private providervacina: VacinaProvider,
     private providermedico: MedicoProvider,
     private db: AngularFireDatabase,
-    public afAuth: AngularFireAuth,
-    public provider: UsuarioProvider
+    public afAuth: AngularFireAuth
   ) {
     this.listmedicos = db.list("/agenda/medico").valueChanges();
     this.uiduser = afAuth.auth.currentUser.uid;
-    this.listvacinas = db
-      .list(
-        "/agenda/" + this.uiduser + "/vacinas/" + this.provider.teste + "/lista"
-      )
-      .valueChanges();
-
-      const Idvacina = this.navParams.get('todoId');
-      console.log(Idvacina);
-
-  afAuth.authState.subscribe( user => {
-      this.todoDataRef$ = this.db.object(`todo/${user.uid}/${Idvacina}`);
-      console.log(this.todoDataRef$);
-    });
-
+    this.listvacinas = db.list("/agenda/vacina").valueChanges();
   }
 
   newVacina() {
@@ -71,7 +50,7 @@ export class AgendaPage {
   }
 
   editVacina(v: any) {
-    this.navCtrl.push(CadastroVacinaPage, { vacina: itenVacina});
+    this.navCtrl.push(CadastroVacinaPage, { vacina: v });
   }
 
   editMedico(m: any) {

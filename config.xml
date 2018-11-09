@@ -88,9 +88,13 @@
         <variable name="PHOTOLIBRARY_ADD_USAGE_DESCRIPTION" value="your photo library usage message here" />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="your photo library usage message here" />
     </plugin>
-    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
-    <plugin name="cordova-plugin-camera" spec="~4.0.3" />
     <engine name="browser" spec="5.0.4" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.1.1" />
+<<<<<<< HEAD
+    <plugin name="cordova-sqlite-storage" spec="2.5.1" />
+=======
+    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
+    <plugin name="cordova-plugin-camera" spec="~4.0.3" />
+>>>>>>> parent of 34a5de4... Atualizações
 </widget>

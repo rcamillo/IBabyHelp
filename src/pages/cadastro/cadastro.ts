@@ -10,7 +10,6 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
 
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFireDatabase } from "angularfire2/database";
 
 import { UsuarioProvider } from "../../providers/usuario/usuario";
 
@@ -20,7 +19,6 @@ import { UsuarioProvider } from "../../providers/usuario/usuario";
   templateUrl: "cadastro.html"
 })
 export class CadastroPage {
-  public listvacinas: any[];
   public fotoPerfil: any;
   form: FormGroup;
   usuario: any;
@@ -32,16 +30,9 @@ export class CadastroPage {
     private provider: UsuarioProvider,
     private toast: ToastController,
     public afAuth: AngularFireAuth,
-    public camera: Camera,
-    private db: AngularFireDatabase
+    public camera: Camera
   ) {
     this.usuario = this.navParams.data.usuario || {};
-    let sub = db
-      .list("/agenda/vacina")
-      .valueChanges()
-      .subscribe(vacinas => {
-        this.listvacinas = vacinas;
-      });
     this.createForm(this.fotoPerfil);
   }
 
@@ -107,9 +98,8 @@ export class CadastroPage {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.listvacinas);
       this.provider
-        .save(this.form.value, this.listvacinas)
+        .save(this.form.value)
         .then(() => {
           this.toast
             .create({ message: "Usuario salvo com sucesso.", duration: 3000 })
