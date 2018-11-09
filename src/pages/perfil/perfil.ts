@@ -108,7 +108,8 @@ export class PerfilPage {
 
   onSubmit() {
     if (this.form.valid) {
-      this.provider.save(this.form.value, this.varCorrecao)
+      this.provider
+        .save(this.form.value, this.varCorrecao)
         .then(() => {
           this.toast
             .create({ message: "Usuario salvo com sucesso.", duration: 3000 })

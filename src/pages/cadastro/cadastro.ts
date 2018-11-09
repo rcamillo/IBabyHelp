@@ -107,7 +107,6 @@ export class CadastroPage {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.listvacinas);
       this.provider
         .save(this.form.value, this.listvacinas)
         .then(() => {

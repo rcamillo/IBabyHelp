@@ -7,11 +7,10 @@ import {
 } from "ionic-angular";
 
 //import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-import { AngularFireDatabase, AngularFireObject  } from "angularfire2/database";
+import { AngularFireDatabase, AngularFireObject } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 import { Observable } from "rxjs";
-//import { map } from "m";
 
 import { CadastroMedicoPage } from "../cadastro-medico/cadastro-medico";
 import { CadastroVacinaPage } from "../cadastro-vacina/cadastro-vacina";
@@ -21,7 +20,6 @@ import { VacinaProvider } from "../../providers/vacina/vacina";
 import { UsuarioProvider } from "../../providers/usuario/usuario";
 
 import { vacinaModel } from "../../Models/vacina";
-
 @IonicPage()
 @Component({
   selector: "page-agenda",
@@ -32,6 +30,7 @@ export class AgendaPage {
   itenVacina = {} as vacinaModel;
   public listvacinas: Observable<any[]>;
   public listmedicos: Observable<any[]>;
+  public listUser: Observable<any[]>;
   public uiduser: string;
 
   constructor(
@@ -44,22 +43,33 @@ export class AgendaPage {
     public afAuth: AngularFireAuth,
     public provider: UsuarioProvider
   ) {
+    this.listUser = db.list("/usuario/").valueChanges();
     this.listmedicos = db.list("/agenda/medico").valueChanges();
     this.uiduser = afAuth.auth.currentUser.uid;
-    this.listvacinas = db
-      .list(
-        "/agenda/" + this.uiduser + "/vacinas/" + this.provider.teste + "/lista"
-      )
-      .valueChanges();
+    // if (this.provider.teste == null) {
+    //   console.log("usuario já cadastrado");
+    // } else {
+    //   const caminho = this.provider.teste;
+    //   console.log(caminho);
 
-      const Idvacina = this.navParams.get('todoId');
-      console.log(Idvacina);
+    //   this.listvacinas = db
+    //     .list("/agenda/" + this.uiduser + "/vacinas/" + caminho + "/lista")
+    //     .valueChanges();
+    // }
 
-  afAuth.authState.subscribe( user => {
-      this.todoDataRef$ = this.db.object(`todo/${user.uid}/${Idvacina}`);
-      console.log(this.todoDataRef$);
-    });
+    // console.log(caminho);
 
+    // this.listvacinas = db
+    //   .list("/agenda/" + this.uiduser + "/vacinas/" + caminho + "/lista")
+    //   .valueChanges();
+
+    //   const Idvacina = this.navParams.get("todoId");
+    //   console.log(Idvacina);
+
+    //   afAuth.authState.subscribe(() => {
+    //     this.todoDataRef$ = this.db.object(`todo/${Idvacina}`);
+    //     console.log(this.todoDataRef$);
+    //   });
   }
 
   newVacina() {
@@ -71,7 +81,7 @@ export class AgendaPage {
   }
 
   editVacina(v: any) {
-    this.navCtrl.push(CadastroVacinaPage, { vacina: itenVacina});
+    this.navCtrl.push(CadastroVacinaPage, { itenVacina: vacinaModel });
   }
 
   editMedico(m: any) {
