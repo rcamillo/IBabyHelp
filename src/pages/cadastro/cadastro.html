@@ -8,28 +8,30 @@
       <ion-grid no-padding>
         <ion-list no-lines>
           <ion-item>
-
             <ion-row>
               <ion-col class="ajuste-image">
-                <div *ngIf="fotoPerfil != null">
-                  <img [src]="fotoPerfil" />                  
-                </div>
+                <div *ngIf="fotoPerfil != null"><img [src]="fotoPerfil" /></div>
               </ion-col>
             </ion-row>
 
             <ion-row>
               <ion-col class="botao-foto" col-4>
-                <button ion-button icon-end round outline (click)="abreCamera()">
-                    Tirar Foto <ion-icon name="ios-camera"></ion-icon>
+                <button
+                  ion-button
+                  icon-end
+                  round
+                  outline
+                  (click)="abreCamera()"
+                >
+                  Tirar Foto <ion-icon name="ios-camera"></ion-icon>
                 </button>
               </ion-col>
-  
             </ion-row>
           </ion-item>
         </ion-list>
       </ion-grid>
 
-      <ion-list>    
+      <ion-list>
         <ion-item class="item-trns">
           <ion-label stacked>Nome</ion-label>
           <ion-input type="text" formControlName="nome"></ion-input>
@@ -39,19 +41,31 @@
           <ion-label stacked>Email</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
-        <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
-            <div [hidden]="!form.controls.email.errors.required">
-             Minino de 6 Caracteres
-            </div>
-          </ion-item>
+        <ion-item
+          *ngIf="
+            !form.controls.email.valid &&
+            (form.controls.email.dirty || form.controls.email.touched)
+          "
+          color="danger"
+        >
+          <div [hidden]="!form.controls.email.errors.required">
+            Verificar E-mail
+          </div>
+        </ion-item>
 
         <ion-item class="item-trns">
           <ion-label stacked>Senha</ion-label>
           <ion-input type="password" formControlName="senha"></ion-input>
         </ion-item>
-        <ion-item *ngIf="!form.controls.senha.valid && (form.controls.senha.dirty || form.controls.senha.touched)" color="danger">
+        <ion-item
+          *ngIf="
+            !form.controls.senha.valid &&
+            (form.controls.senha.dirty || form.controls.senha.touched)
+          "
+          color="danger"
+        >
           <div [hidden]="!form.controls.senha.errors.required">
-           Minino de 6 Caracteres
+            Minino de 6 Caracteres
           </div>
         </ion-item>
 

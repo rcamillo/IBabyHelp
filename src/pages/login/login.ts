@@ -36,13 +36,6 @@ export class LoginPage {
     let email = form.value.email;
     let senha = form.value.senha;
 
-<<<<<<< HEAD
-    this.afAuth.auth.signInWithEmailAndPassword(email, senha)
-      .then((result) => {
-      })
-      .catch((error) => {
-      })
-=======
     this.afAuth.auth
       .signInWithEmailAndPassword(email, senha)
       .then(result => {})
@@ -55,7 +48,6 @@ export class LoginPage {
         });
         alert.present();
       });
->>>>>>> ca669d160f0fff58a7a5ad2eeb2a06beb74cb66c
   }
 
   public goToSignup(): void {
