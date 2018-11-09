@@ -80,7 +80,7 @@
 
         <ion-item>
           <ion-label class="Label">Sexo</ion-label>
-          <ion-select formControlName="sexo" placeholder="{{u.sexo}}">
+          <ion-select [disable]="!usuario.valid" formControlName="sexo" placeholder="{{u.sexo}}">
             <ion-option value="Feminino">Feminino</ion-option>
             <ion-option value="Masculino">Masculino</ion-option>
           </ion-select>
@@ -92,6 +92,7 @@
             displayFormat="DD/MM/YYYY"
             formControlName="babyDate"
             placeholder="{{u.babyDate}}"
+            [disabled]="!form.valid"
           ></ion-datetime>
         </ion-item>
       </div>

@@ -11,12 +11,10 @@ import { StatusBar } from "@ionic-native/status-bar";
 
 import { Camera } from "@ionic-native/camera";
 
-//import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { AngularFireModule } from "@angular/fire";
 
-//import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireDatabaseModule } from "angularfire2/database";
 
 import { AngularFireStorageModule } from "angularfire2/storage";
