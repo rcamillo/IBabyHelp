@@ -10,7 +10,8 @@ import { AngularFireAuth } from "@angular/fire/auth";
 */
 @Injectable()
 export class VacinaProvider {
-  private PATH = "/agenda/" + this.auth.auth.currentUser.uid;
+  private PATH =
+    "/agenda/0E7tcctKarSd90h8hrY3grJ25Xw2/vacinas/-LQqIBQfL0zeTjb1xbjn/lista";
 
   constructor(private db: AngularFireDatabase, public auth: AngularFireAuth) {}
 

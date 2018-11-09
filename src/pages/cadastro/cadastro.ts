@@ -14,15 +14,12 @@ import { AngularFireDatabase } from "angularfire2/database";
 
 import { UsuarioProvider } from "../../providers/usuario/usuario";
 
-import { Observable } from "rxjs";
-
 @IonicPage()
 @Component({
   selector: "page-cadastro",
   templateUrl: "cadastro.html"
 })
 export class CadastroPage {
-  private PATH = "/agenda/vacina/";
   public listvacinas: any[];
   public fotoPerfil: any;
   form: FormGroup;
@@ -110,8 +107,9 @@ export class CadastroPage {
 
   onSubmit() {
     if (this.form.valid) {
+      console.log(this.listvacinas);
       this.provider
-        .save(this.form.value, lista: this.listavacinas)
+        .save(this.form.value, this.listvacinas)
         .then(() => {
           this.toast
             .create({ message: "Usuario salvo com sucesso.", duration: 3000 })

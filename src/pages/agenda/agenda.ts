@@ -11,12 +11,14 @@ import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 import { Observable } from "rxjs";
+//import { map } from "m";
 
 import { CadastroMedicoPage } from "../cadastro-medico/cadastro-medico";
 import { CadastroVacinaPage } from "../cadastro-vacina/cadastro-vacina";
 
 import { MedicoProvider } from "../../providers/medico/medico";
 import { VacinaProvider } from "../../providers/vacina/vacina";
+import { UsuarioProvider } from "../../providers/usuario/usuario";
 
 @IonicPage()
 @Component({
@@ -35,13 +37,16 @@ export class AgendaPage {
     private providervacina: VacinaProvider,
     private providermedico: MedicoProvider,
     private db: AngularFireDatabase,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public provider: UsuarioProvider
   ) {
     this.listmedicos = db.list("/agenda/medico").valueChanges();
-    this.listvacinas = db
-      .list("/agenda/" + this.afAuth.auth.currentUser.uid)
-      .valueChanges();
     this.uiduser = afAuth.auth.currentUser.uid;
+    this.listvacinas = db
+      .list(
+        "/agenda/" + this.uiduser + "/vacinas/" + this.provider.teste + "/lista"
+      )
+      .valueChanges();
   }
 
   newVacina() {
