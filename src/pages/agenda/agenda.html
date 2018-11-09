@@ -56,7 +56,8 @@
                 src="https://www.tribunapr.com.br/wp-content/uploads/sites/1/2018/08/vacina-poliomelite-825x509.jpg?a86372"
               />
             </ion-avatar>
-            <h2>{{ v.nomeVacina }}</h2>
+            <h1>{{$key}}</h1>
+            <h2 #desc [ngModel]="(todoDataRef$ | async)?.Desc"></h2>
             <h3>Aplicar: {{ v.aplicacao }}</h3>
             <p>Dose: {{ v.dose }}</p>
           </ion-item>

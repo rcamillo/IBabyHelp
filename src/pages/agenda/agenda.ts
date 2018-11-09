@@ -7,7 +7,7 @@ import {
 } from "ionic-angular";
 
 //import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-import { AngularFireDatabase } from "angularfire2/database";
+import { AngularFireDatabase, AngularFireObject  } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 import { Observable } from "rxjs";
@@ -20,12 +20,16 @@ import { MedicoProvider } from "../../providers/medico/medico";
 import { VacinaProvider } from "../../providers/vacina/vacina";
 import { UsuarioProvider } from "../../providers/usuario/usuario";
 
+import { vacinaModel } from "../../Models/vacina";
+
 @IonicPage()
 @Component({
   selector: "page-agenda",
   templateUrl: "agenda.html"
 })
 export class AgendaPage {
+  todoDataRef$: AngularFireObject<vacinaModel>;
+  itenVacina = {} as vacinaModel;
   public listvacinas: Observable<any[]>;
   public listmedicos: Observable<any[]>;
   public uiduser: string;
@@ -47,6 +51,15 @@ export class AgendaPage {
         "/agenda/" + this.uiduser + "/vacinas/" + this.provider.teste + "/lista"
       )
       .valueChanges();
+
+      const Idvacina = this.navParams.get('todoId');
+      console.log(Idvacina);
+
+  afAuth.authState.subscribe( user => {
+      this.todoDataRef$ = this.db.object(`todo/${user.uid}/${Idvacina}`);
+      console.log(this.todoDataRef$);
+    });
+
   }
 
   newVacina() {
@@ -58,7 +71,7 @@ export class AgendaPage {
   }
 
   editVacina(v: any) {
-    this.navCtrl.push(CadastroVacinaPage, { vacina: v });
+    this.navCtrl.push(CadastroVacinaPage, { vacina: itenVacina});
   }
 
   editMedico(m: any) {
