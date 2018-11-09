@@ -67,12 +67,7 @@
       "cordova-plugin-camera": {},
       "cordova-sqlite-storage": {}
     },
-    "cordova-plugin-inappbrowser": {},
-    "platforms": [
-      "browser",
-      "ios",
-      "android"
-    ]
+    "cordova-plugin-inappbrowser": {}
   },
   "platforms": [
     "browser",

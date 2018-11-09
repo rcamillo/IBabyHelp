@@ -3,14 +3,28 @@ import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
 
+import {
+  AngularFireStorage,
+  AngularFireUploadTask
+} from "angularfire2/storage";
+/*
+  Generated class for the UsuarioProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
 @Injectable()
 export class UsuarioProvider {
   private PATH = `/usuario/`;
+<<<<<<< HEAD
   private pathVacinas = "/agenda/";
+=======
+>>>>>>> parent of 34a5de4... Atualizações
 
   constructor(
     private db: AngularFireDatabase,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private afStorage: AngularFireStorage
   ) {}
 
   save(usuario: any, lista: any[]) {
@@ -43,8 +57,12 @@ export class UsuarioProvider {
               babyname: usuario.babyname,
               sexo: usuario.sexo,
               babyDate: usuario.babyDate,
+<<<<<<< HEAD
               fotoPerfil: usuario.fotoPerfil,
               caminhoVacina: teste
+=======
+              fotoPerfil: usuario.fotoPerfil
+>>>>>>> parent of 34a5de4... Atualizações
             }).key;
             this.db
               .list(this.PATH)
