@@ -38,7 +38,9 @@ export class AgendaPage {
     public afAuth: AngularFireAuth
   ) {
     this.listmedicos = db.list("/agenda/medico").valueChanges();
-    this.listvacinas = db.list("/usuario/").valueChanges();
+    this.listvacinas = db
+      .list("/agenda/" + this.afAuth.auth.currentUser.uid)
+      .valueChanges();
     this.uiduser = afAuth.auth.currentUser.uid;
   }
 

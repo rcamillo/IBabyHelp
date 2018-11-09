@@ -2,15 +2,16 @@ import { Injectable } from "@angular/core";
 
 import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from "@angular/fire/auth";
-
+import { VacinaProvider } from "../vacina/vacina";
 @Injectable()
 export class UsuarioProvider {
   private PATH = `/usuario/`;
-  private pathVacinas = `/agenda/vacinas`;
+  private pathVacinas = "/agenda/";
 
   constructor(
     private db: AngularFireDatabase,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public providers: VacinaProvider
   ) {}
 
   save(usuario: any) {
@@ -41,7 +42,7 @@ export class UsuarioProvider {
               sexo: usuario.sexo,
               babyDate: usuario.babyDate,
               fotoPerfil: usuario.fotoPerfil,
-              carteiraVacinas: usuario.vacinas
+              carteiraVacinas: usuario.listaVacinas
             }).key;
             this.db
               .list(this.PATH)
@@ -49,9 +50,12 @@ export class UsuarioProvider {
               .catch(e => reject(e));
           })
           .catch(error => {});
-        // this.db
-        //   .list(this.pathVacinas + this.afAuth.auth.currentUser.uid)
-        //   .push({ vacinas: usuario.vacinas });
+        //this.providers.save(usuario.listaVacinas);
+        // this.db.list(this.pathVacinas + this.afAuth.auth.currentUser.uid).push({
+        //   aplicacao: usuario.listaVacinas.aplicacao,
+        //   dose: usuario.listaVacinas.dose,
+        //   nomeVacina: usuario.listaVacinas.nomeVacina
+        // });
       }
     });
   }

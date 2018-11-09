@@ -45,7 +45,7 @@ export class CadastroPage {
       .subscribe(vacinas => {
         this.listvacinas = vacinas;
       });
-    this.createForm(this.fotoPerfil, this.listvacinas);
+    this.createForm(this.fotoPerfil);
   }
 
   abreCamera() {
@@ -66,7 +66,7 @@ export class CadastroPage {
         // If it's base64 (DATA_URL):
         let base64Image = "data:image/jpeg;base64," + imageData;
         this.fotoPerfil = base64Image;
-        this.createForm(this.fotoPerfil, this.listvacinas);
+        this.createForm(this.fotoPerfil);
       },
       err => {
         // Handle error
@@ -74,7 +74,7 @@ export class CadastroPage {
     );
   }
 
-  createForm(imagem, vacinas) {
+  createForm(imagem) {
     let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.form = this.formBuilder.group({
       key: [this.usuario.key],
@@ -104,15 +104,14 @@ export class CadastroPage {
       babyname: [this.usuario.babyname, Validators.required],
       sexo: [this.usuario.sexo, Validators.required],
       babyDate: [this.usuario.babyDate, Validators.required],
-      fotoPerfil: imagem,
-      listaVacinas: vacinas
+      fotoPerfil: imagem
     });
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.provider
-        .save(this.form.value)
+        .save(this.form.value, lista: this.listavacinas)
         .then(() => {
           this.toast
             .create({ message: "Usuario salvo com sucesso.", duration: 3000 })
