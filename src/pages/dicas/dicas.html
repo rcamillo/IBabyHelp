@@ -1,62 +1,25 @@
-<!--
-  <ion-header color="primary">
-  	<ion-navbar hideBackButton>
-  		<button ion-button menuToggle>
-        <ion-icon name="menu" color="primary"></ion-icon>
-      </button>
-  		<ion-title>Dicas</ion-title>
-  	</ion-navbar>
-  </ion-header>
--->
-
 <ion-content class="login-container">
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <img
-          src="https://www.globalframe.com.br/gf_base/empresas/MIGA/imagens/8B22D61C33E0BDC4856FA0F187D962CE1F29_medico.png"
-        />
-      </ion-avatar>
-      <h2>Cuidados com o furo na orelha</h2>
-      <p>Novembro 5, 2017</p>
-    </ion-item>
+  <ion-list *ngFor="let n of (listaNoticia | async)">
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/projeto-fatec2018.appspot.com/o/077cb8f7-f78d-44d1-b439-bc5bf90359d1.jpg?alt=media&token=b45bd068-5637-4197-8ec2-330ce2b3a468"
+          />
+        </ion-avatar>
+        <h2>{{n.titulo}}</h2>
+        <p>{{n.data}}</p>
+      </ion-item>
+      <img
+      [src]="n.foto"
+      />
+      <ion-card-content>
+        <p>
+          {{n.descricao}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list> 
 
-    <img
-      src="https://assets.babycenter.com/ims/2012/09/mag_ap_bab1_090_wide.jpg?width=600"
-    />
-
-    <ion-card-content>
-      <p>
-        Se você não observar nenhum sinal de inflamação na área, mantenha os
-        brincos iniciais por seis semanas. Durante esse tempo, pelo menos uma
-        vez por dia, limpe suas mãos e passe um pouco de álcool a 70% na
-        orelhinha e ao redor do brinco. Procure também secar bem a área após o
-        banho para que não fique úmida.
-      </p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <img
-          src="https://www.globalframe.com.br/gf_base/empresas/MIGA/imagens/8B22D61C33E0BDC4856FA0F187D962CE1F29_medico.png"
-        />
-      </ion-avatar>
-      <h2>Mudança cor dos olhos</h2>
-      <p>Janeiro 26, 2018</p>
-    </ion-item>
-
-    <img
-      src="https://vivasaude.digisa.com.br/upload/imagens_upload/beb_olhos.jpg"
-    />
-
-    <ion-card-content>
-      <p>
-        Os bebês de ascendência negra ou asiática costumam nascer com olhos
-        castanhos e permanecer com os olhos castanhos na infância e vida adulta,
-        assim como muitos bebês de pele branca...
-      </p>
-    </ion-card-content>
-  </ion-card>
+    
 </ion-content>
