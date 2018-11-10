@@ -63,6 +63,7 @@
         <ion-item>
           <ion-label class="Label">Nome</ion-label>
           <ion-input
+          [disabled]="!form.valid"
             type="text"
             placeholder="{{u.nome}}"
             formControlName="nome"
@@ -72,6 +73,7 @@
         <ion-item>
           <ion-label class="Label">Nome do Bebe</ion-label>
           <ion-input
+          [disabled]="!form.valid"
             type="text"
             placeholder="{{u.babyname}}"
             formControlName="babyname"
@@ -80,7 +82,7 @@
 
         <ion-item>
           <ion-label class="Label">Sexo</ion-label>
-          <ion-select [disable]="!usuario.valid" formControlName="sexo" placeholder="{{u.sexo}}">
+          <ion-select [disabled]="!form.valid" formControlName="sexo" placeholder="{{u.sexo}}">
             <ion-option value="Feminino">Feminino</ion-option>
             <ion-option value="Masculino">Masculino</ion-option>
           </ion-select>
