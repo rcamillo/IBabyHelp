@@ -85,9 +85,17 @@ export class PerfilPage {
       this.form = this.formBuilder.group({
         key: [this.usuario.key],
         nome: [
-          this.usuario.nome, Validators.required],
+          this.usuario.nome,
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.minLength(4),
+          Validators.maxLength(15)
+        ],
         babyname: [
-          this.usuario.babyname, Validators.required],
+          this.usuario.babyname,
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.minLength(3),
+          Validators.maxLength(15)
+        ],
         sexo: [this.usuario.sexo, Validators.required],
         babyDate: [this.usuario.babyDate, Validators.required],
         foto: [this.usuario.image]
