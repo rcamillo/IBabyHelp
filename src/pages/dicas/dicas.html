@@ -7,19 +7,13 @@
             src="https://firebasestorage.googleapis.com/v0/b/projeto-fatec2018.appspot.com/o/077cb8f7-f78d-44d1-b439-bc5bf90359d1.jpg?alt=media&token=b45bd068-5637-4197-8ec2-330ce2b3a468"
           />
         </ion-avatar>
-        <h2>{{n.titulo}}</h2>
-        <p>{{n.data}}</p>
+        <h2>{{ n.titulo }}</h2>
+        <p>{{ n.data }}</p>
       </ion-item>
-      <img
-      [src]="n.foto"
-      />
+      <img [src]="n.foto" />
       <ion-card-content>
-        <p>
-          {{n.descricao}}
-        </p>
+        <p>{{ n.descricao }}</p>
       </ion-card-content>
     </ion-card>
-  </ion-list> 
-
-    
+  </ion-list>
 </ion-content>
